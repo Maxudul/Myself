@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{min-height:100vh;background:radial-gradient(circle at top,#0f1f1a,#050505 70%);color:#fff;display:flex;justify-content:center;padding:30px 15px;}
+.container{width:100%;max-width:420px;text-align:center;}
+.avatar{width:110px;height:110px;margin:0 auto 15px;border-radius:25px;overflow:hidden;box-shadow:0 0 20px rgba(0,255,170,.4);}
+.avatar img{width:100%;height:100%;object-fit:cover;}
+.name{font-size:30px;font-weight:700;}
+.tagline{color:#00ff99;letter-spacing:3px;font-size:13px;margin-top:5px;}
+.vibe{margin:18px auto;padding:10px 18px;display:inline-flex;gap:8px;align-items:center;border-radius:25px;background:rgba(255,255,255,0.08);}
+.info-row{margin-top:15px;display:flex;justify-content:center;gap:12px;}
+.info-box{padding:8px 14px;border-radius:20px;background:rgba(255,255,255,0.07);font-size:13px;}
+.music{margin:20px auto;padding:12px;border-radius:18px;background:rgba(255,255,255,0.07);display:flex;align-items:center;gap:12px;}
+.music img{width:45px;height:45px;border-radius:12px;object-fit:cover;}
+.music-title{text-align:left;font-size:14px;}
+.bio{margin:25px 10px;font-size:14px;opacity:.85;line-height:1.6;}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:20px;}
+.card{padding:25px 15px;border-radius:20px;background:rgba(255,255,255,0.06);letter-spacing:1px;font-size:15px;display:flex;align-items:center;justify-content:center;gap:8px;}
+.social-list{margin-top:30px;display:flex;flex-direction:column;gap:14px;}
+.social-item{display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:18px;background:rgba(255,255,255,0.06);color:#00ff99;text-decoration:none;font-size:15px;transition:.3s;}
+.social-item i{font-size:20px;width:26px;text-align:center;}
+.social-item:hover{transform:translateY(-3px);box-shadow:0 0 25px rgba(0,255,153,.35);}
+.fact-box{margin-top:30px;padding:20px 15px;border-radius:20px;background:rgba(255,255,255,0.06);font-size:15px;letter-spacing:1px;color:#fff;line-height:1.5;text-align:center;}
+.fact-title{color:#00ff99;font-weight:600;margin-bottom:10px;font-size:16px;}
+.fact-text{margin-bottom:15px;font-style:italic;}
+.fact-btn{background:#00ff99;color:#000;border:none;border-radius:12px;padding:8px 16px;cursor:pointer;font-weight:600;transition:.3s;}
+.fact-btn:hover{background:#00cc7a;}
+.life-section{margin-top:40px;text-align:center;}
+.life-section .section-title{color:#fff;font-size:26px;font-weight:700;margin-bottom:25px;}
+.timeline-wrapper{overflow-x:auto;padding-bottom:10px;}
+.timeline-wrapper::-webkit-scrollbar{height:8px;}
+.timeline-wrapper::-webkit-scrollbar-thumb{background:#00ff99;border-radius:5px;}
+.timeline{display:flex;gap:20px;padding-bottom:10px;}
+.timeline-event{min-width:180px;background:rgba(255,255,255,0.05);border-radius:15px;padding:10px;text-align:center;flex-shrink:0;}
+.timeline-event img{width:100%;height:120px;border-radius:12px;object-fit:cover;margin-bottom:10px;}
+.timeline-event .event-text{color:#fff;font-size:16px;font-weight:500;}
+.hobbies{margin-top:40px;}
+.hobbies .section-title{color:#fff;font-size:26px;font-weight:700;margin-bottom:20px;}
+.hobby-list{display:flex;justify-content:center;flex-wrap:wrap;gap:15px;}
+.hobby-item{background:rgba(255,255,255,0.06);padding:12px 18px;border-radius:18px;font-size:16px;display:flex;align-items:center;gap:8px;transition:.3s;}
+.hobby-item:hover{background:rgba(0,255,153,0.2);cursor:pointer;}
+.achievements{margin-top:40px;}
+.achievements .section-title{color:#fff;font-size:26px;font-weight:700;margin-bottom:20px;}
+.achievement-list{display:flex;overflow-x:auto;gap:15px;padding-bottom:10px;}
+.achievement-list::-webkit-scrollbar{height:8px;}
+.achievement-list::-webkit-scrollbar-thumb{background:#00ff99;border-radius:5px;}
+.achievement-card{min-width:180px;background:rgba(255,255,255,0.05);border-radius:15px;padding:10px;text-align:center;flex-shrink:0;}
+.achievement-card img{width:100%;height:100px;border-radius:12px;object-fit:cover;margin-bottom:10px;}
+.achievement-card .achievement-text{font-size:15px;color:#fff;font-weight:500;}
+.gallery{margin-top:40px;}
+.gallery .section-title{color:#fff;font-size:26px;font-weight:700;margin-bottom:20px;}
+.gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+.gallery-grid img{width:100%;border-radius:12px;object-fit:cover;cursor:pointer;transition:.3s;}
+.gallery-grid img:hover{transform:scale(1.05);}
+.quote-box{margin-top:40px;padding:20px 15px;border-radius:20px;background:rgba(0,255,153,0.08);color:#00ff99;font-size:16px;font-style:italic;line-height:1.5;}
+.poll{margin-top:40px;padding:15px 10px;border-radius:20px;background:rgba(255,255,255,0.05);}
+.poll-title{font-size:18px;color:#00ff99;font-weight:600;margin-bottom:12px;}
+.poll-options{display:flex;justify-content:center;gap:15px;}
+.poll-btn{padding:10px 18px;border:none;border-radius:12px;background:rgba(0,255,153,0.2);color:#fff;cursor:pointer;font-weight:600;transition:.3s;}
+.poll-btn:hover{background:#00ff99;color:#000;}
+#poll-text{margin-top:15px;font-weight:600;font-size:15px;color:#00ff99;transition:all .3s ease;}
+/* Academics Button */
+.academics{margin-top:50px;text-align:center;}
+.academics .section-title{color:#fff;font-size:26px;font-weight:700;margin-bottom:15px;}
+.academics-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:14px 22px;
+  margin:10px 0;
+  border-radius:25px;
+  background:transparent;
+  border:2px solid #00ff99;
+  color:#00ff99;
+  font-weight:600;
+  font-size:16px;
+  text-decoration:none;
+  transition:.3s;
+  box-shadow:0 0 10px rgba(0,255,153,0.5);
+  cursor:pointer;
+}
+.academics-btn i{font-size:22px;}
+.academics-btn:hover{
+  background:#00ff99;
+  color:#000;
+  box-shadow:0 0 20px rgba(0,255,153,0.8);
+  transform:translateY(-3px);
+}
+.academics-overview{margin-top:15px;padding:12px 15px;border-radius:12px;background:rgba(255,255,255,0.05);text-align:left;font-size:14px;color:#fff;}
+.academics-overview .overview-item{margin-bottom:6px;display:flex;justify-content:space-between;}
+
+/* Responsive Adjustments */
+@media(min-width: 600px) {
+  .container { max-width: 600px; }
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  .achievement-list { justify-content:flex-start; }
+  .hobby-list { justify-content:flex-start; }
+  .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media(min-width: 900px) {
+  .container { max-width: 900px; }
+  .grid { grid-template-columns: repeat(4, 1fr); }
+  .achievement-list { overflow-x: visible; }
+  .gallery-grid { grid-template-columns: repeat(4, 1fr); }
+  .timeline-wrapper { padding-bottom:0; }
+}
+.timeline-wrapper {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #00ff99 rgba(255,255,255,0.1);
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="avatar">
+    <img loading="lazy" src="https://i.ibb.co.com/2Y8wV9SS/IMG-20251230-015205-005.webp">
+  </div>
+  <div class="name">Maksudul Munna</div>
+  <div class="tagline">ARTIST • VISIONARY • REBEL</div>
+  <div class="vibe">⚡ "Ever tried. Ever failed. No matter. Try again. Fail again. Fail better."  🌙</div>
+
+  <div class="info-row">
+    <div class="info-box">🕒 ∞</div>
+    <div class="info-box">📍 Mymensingh, BD</div>
+  </div>
+
+  <div class="music">
+    <img loading="lazy" src="https://i.ibb.co.com/ynSBZ6gC/images.jpg">
+    <div class="music-title"><strong>Shape of You</strong><br><small>Ed Sheeran</small></div>
+  </div>
+
+  <div class="bio">Student 🇧🇩 | StoryWriter & Tech Enthusiast.<br>Turning ideas into reality, one pixel at a time.</div>
+
+  <div class="grid">
+    <div class="card"><i class="fas fa-user"></i> Egocentric</div>
+    <div class="card"><i class="fas fa-user-secret"></i> Introvert</div>
+    <div class="card"><i class="fas fa-money-bill-wave"></i> Selfish</div>
+    <div class="card"><i class="fas fa-star"></i> Self-absorbed</div>
+  </div>
+
+  <div class="social-list">
+    <a class="social-item" href="https://www.facebook.com/share/1Ey2xqhkdD/"><i class="fab fa-facebook-f"></i><span>Facebook</span></a>
+    <a class="social-item" href="https://www.instagram.com/maxudul_munna?igsh=bGsyc2xodHJvZGlo"><i class="fab fa-instagram"></i><span>Instagram</span></a>
+    <a class="social-item" href="wa.me/qr/NMW67SNULXJUG1"><i class="fab fa-whatsapp"></i><span>WhatsApp</span></a>
+    <a class="social-item" href="https://pin.it/NxhZUtMBZ"><i class="fab fa-pinterest-p"></i><span>Pinterest</span></a>
+    <a class="social-item" href="https://youtube.com/@midnightwhisperyt?si=G7m7RkaMBlzt03Zt"><i class="fab fa-youtube"></i><span>YouTube</span></a>
+    <a class="social-item" href="https://www.snapchat.com/add/maxudul_munna?share_id=7tr0SxUycfI&locale=en-GB"><i class="fab fa-snapchat-ghost"></i><span>Snapchat</span></a>
+  </div>
+
+  <div class="fact-box">
+    <div class="fact-title">• Did You Know?</div>
+    <div class="fact-text" id="fact-text">I love coding late at night.</div>
+    <button class="fact-btn" onclick="nextFact()">Another Fact</button>
+  </div>
+
+  <div class="life-section">
+    <div class="section-title">My Life</div>
+    <div class="timeline-wrapper">
+      <div class="timeline">
+        <div class="timeline-event">
+          <img loading="lazy" src="https://i.ibb.co.com/RkNHdS1Z/QVZkd-EJf-U3-Qt-NGJm-MGkt-Rg.jpg">
+          <div class="event-text">Born in Mymensingh, Bangladesh (2007)</div>
+        </div>
+        <div class="timeline-event">
+          <img loading="lazy" src="https://i.ibb.co.com/4R64MhTW/QVZl-Um-I2b-Uh-PUUdtd19ue-A.jpg">
+          <div class="event-text">Started My College Life(2024)</div>
+        </div>
+        <div class="timeline-event">
+          <img loading="lazy" src="https://i.ibb.co.com/tMK5m1y8/retouch-2025083016274126.jpg">
+          <div class="event-text">Passed HSC Exam (GPA-5) <br></>with Full Free Scholarship (2025)</div>
+        </div>
+      
+      <div class="timeline-event">
+          <img loading="lazy" src="https://i.ibb.co.com/rKLMty2z/QVZlb-HJJa-Eo1-REJ3c-HVFYQ.jpg">
+          <div class="event-text">Got Perfect Grade certificate <br> (From College)</></div>
+        </div>
+      
+      <div class="timeline-event">
+          <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/6/67/Learning_Curve_--_Coming_Soon_Placeholder.png">
+          <div class="event-text">Coming Soon</div>
+        </div>
+      
+      
+      
+    
+    
+        </div> 
+    </div>
+  </div>
+
+  <div class="hobbies">
+    <div class="section-title">Hobbies & Interests</div>
+    <div class="hobby-list">
+      <div class="hobby-item">🎮 Gaming</div>
+      <div class="hobby-item">📸 Photography</div>
+      <div class="hobby-item">🎵 Music</div>
+      <div class="hobby-item">✈️ Travel</div>
+    </div>
+  </div>
+
+  <div class="achievements">
+    <div class="section-title">Achievements</div>
+    <div class="achievement-list">
+      <div class="achievement-card">
+        <img loading="lazy" src="https://i.ibb.co.com/4wvGqR5k/HSC-GPA-5-OG-Image-2025.png">
+        <div class="achievement-text">Presidency University & Prothom Alo <br>(Certificate)</></div>
+      </div>
+      <div class="achievement-card">
+        <img loading="lazy" src="https://i.ibb.co.com/9k32gzsb/certificate-1.png">
+        <div class="achievement-text">Certificate Of Excellence</div>
+      </div>
+      <div class="achievement-card">
+        <img loading="lazy" src="https://i.ibb.co.com/20PsC5GZ/WE.jpg">
+        <div class="achievement-text">Science Fair Participation 2023</div>
+      </div>
+    
+    <div class="achievement-card">
+        <img loading="lazy" src="https://i.ibb.co.com/0yVpJzwN/images.png">
+        <div class="achievement-text">Google Career Certificates <br></>(Foundational Knowledge)</div>
+      </div>
+    
+    <div class="achievement-card">
+        <img loading="lazy" src="https://i.ibb.co.com/Cswzb8Kz/share.png">
+        <div class="achievement-text">Google Developer Badges<br></> (Logic & Coding)</div>
+      </div>
+    
+    
+    
+    
+    
+    </div>
+  </div>
+
+  <div class="gallery">
+    <div class="section-title">Gallery</div>
+    <div class="gallery-grid">
+      <img loading="lazy" src="https://i.ibb.co.com/v4CxR3bJ/IMG-1767965910057.jpg">
+      <img loading="lazy" src="https://i.ibb.co.com/k2N7p3bb/IMG-20251230-012241.jpg">
+      <img loading="lazy" src="https://i.ibb.co.com/9dqCzKG/FB-IMG-3047310916701312656.jpg">
+      <img loading="lazy" src="https://i.ibb.co.com/YTPnmC9f/retouch-2024122023020602.jpg">
+      <img loading="lazy" src="https://i.ibb.co.com/XrcX4khr/IMG-20251214-202209.jpg">
+      <img loading="lazy" src="https://i.ibb.co.com/KjL397XQ/IMG-20251207-205550.jpg">
+      <img loading="lazy" src="https://i.ibb.co.com/qM6KKnzV/retouch-2024122015034815.jpg">
+      <img loading="lazy" src="https://i.ibb.co.com/FLBzpSNL/Screenshot-2024-12-12-11-00-07-110-com-facebook-katana.png">
+      <img loading="lazy" src="https://i.ibb.co.com/HT9cxbpf/retouch-2025083016274126.jpg">
+      <img loading="lazy" src="https://i.ibb.co.com/gb4K8kwC/retouch-2024091710143985.jpg">
+      <img loading="lazy" src="https://i.ibb.co.com/XxcczpCX/Snapchat-1585967114.jpg">
+      <img loading="lazy" src="https://i.ibb.co.com/1GQwyQvK/Snapchat-368490589.jpg">
+      <img loading="lazy" src="https://i.ibb.co.com/Y45L0spY/retouch-2025112414394377.jpg">
+      <img loading="lazy" src="https://i.ibb.co.com/Tx1zmWWh/retouch-2024091800470977.jpg">
+      <img loading="lazy" src="https://i.ibb.co.com/hqhnw1f/FB-IMG-1718116442789.jpg">
+      <img loading="lazy" src="https://i.ibb.co.com/HpXv4SvV/Snapchat-2136611923.jpg">
+      <img loading="lazy" src="https://i.ibb.co.com/fV6wdSFP/retouch-2025082222540541.jpg">
+      <img loading="lazy" src="https://i.ibb.co.com/LHx8z9P/FB-IMG-1718116480985.jpg">
+      <img loading="lazy" src="">
+      <img loading="lazy" src="">
+      <img loading="lazy" src="">
+      <img loading="lazy" src="">
+      
+       </div>
+  </div>
+
+  <div class="quote-box">
+    "Ever tried. Ever failed. No matter. Try again. Fail again. Fail better."<br>&nbsp;&nbsp;&nbsp;&nbsp;~ Samuel Beckett
+  </div>
+
+  <div class="poll">
+    <div class="poll-title">Coffee ☕ or Tea 🍵?</div>
+    <div class="poll-options">
+      <button class="poll-btn" onclick="showPollText('coffee')">☕ Coffee</button>
+      <button class="poll-btn" onclick="showPollText('tea')">🍵 Tea</button>
+    </div>
+    <div id="poll-text"></div>
+  </div>
+
+  <!-- Academics & Admission Results -->
+  <div class="academics">
+    <div class="section-title">📚 Academics & Admissions</div>
+
+    <!-- Button style -->
+    <a href="https://your-academics-page.com" target="_blank" class="academics-btn">
+      <i class="fas fa-graduation-cap"></i>
+      <span>View My Academic & Admission Results</span>
+    </a>
+
+    <!-- Quick Overview -->
+    <div class="academics-overview">
+      <div class="overview-item"><strong>SUST A-Unit:</strong> Pending</div>
+      <div class="overview-item"><strong>Jagannath University:</strong> 6798th</div>
+      <div class="overview-item"><strong>Jahangirnagar University:</strong> 1589th</div>
+      <div class="overview-item"><strong>Chittagong University:</strong> 5886th</div>
+      <div class="overview-item"><strong>Comilla University:</strong> Pending</div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const facts=["I love coding late at night.","

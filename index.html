@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio</title>
+<title>Maksudul Munna | Portfolio</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -31,93 +31,73 @@ body{min-height:100vh;background:radial-gradient(circle at top,#0f1f1a,#050505 7
 .social-item:hover{transform:translateY(-3px);box-shadow:0 0 25px rgba(0,255,153,.35);}
 .fact-box{margin-top:30px;padding:20px 15px;border-radius:20px;background:rgba(255,255,255,0.06);font-size:15px;letter-spacing:1px;color:#fff;line-height:1.5;text-align:center;}
 .fact-title{color:#00ff99;font-weight:600;margin-bottom:10px;font-size:16px;}
-.fact-text{margin-bottom:15px;font-style:italic;}
+.fact-text{margin-bottom:15px;font-style:italic; min-height: 45px;}
 .fact-btn{background:#00ff99;color:#000;border:none;border-radius:12px;padding:8px 16px;cursor:pointer;font-weight:600;transition:.3s;}
 .fact-btn:hover{background:#00cc7a;}
+
+/* Work Experience Styles */
+.experience-section {margin-top: 50px; text-align: left;}
+.experience-section .section-title {color: #fff; font-size: 26px; font-weight: 700; margin-bottom: 25px; text-align: center;}
+.timeline-container {position: relative; padding-left: 30px; margin: 0 10px;}
+.timeline-container::before {content: ''; position: absolute; left: 5px; top: 5px; bottom: 5px; width: 2px; background: #00ff99; box-shadow: 0 0 10px rgba(0, 255, 153, 0.5);}
+.experience-item {position: relative; margin-bottom: 30px;}
+.experience-item::before {content: ''; position: absolute; left: -31px; top: 6px; width: 14px; height: 14px; background: #00ff99; border-radius: 50%; box-shadow: 0 0 15px #00ff99, 0 0 30px rgba(0, 255, 153, 0.6); z-index: 1;}
+.exp-date {font-size: 14px; color: #a0a0a0; margin-bottom: 4px;}
+.exp-role {font-size: 18px; font-weight: 700; color: #fff;}
+.exp-company {font-size: 15px; color: #00ff99; margin-bottom: 10px;}
+.exp-desc {font-size: 14px; line-height: 1.5; color: rgba(255, 255, 255, 0.8);}
+
 .life-section{margin-top:40px;text-align:center;}
 .life-section .section-title{color:#fff;font-size:26px;font-weight:700;margin-bottom:25px;}
 .timeline-wrapper{overflow-x:auto;padding-bottom:10px;}
-.timeline-wrapper::-webkit-scrollbar{height:8px;}
-.timeline-wrapper::-webkit-scrollbar-thumb{background:#00ff99;border-radius:5px;}
 .timeline{display:flex;gap:20px;padding-bottom:10px;}
 .timeline-event{min-width:180px;background:rgba(255,255,255,0.05);border-radius:15px;padding:10px;text-align:center;flex-shrink:0;}
 .timeline-event img{width:100%;height:120px;border-radius:12px;object-fit:cover;margin-bottom:10px;}
 .timeline-event .event-text{color:#fff;font-size:16px;font-weight:500;}
+
 .hobbies{margin-top:40px;}
 .hobbies .section-title{color:#fff;font-size:26px;font-weight:700;margin-bottom:20px;}
 .hobby-list{display:flex;justify-content:center;flex-wrap:wrap;gap:15px;}
 .hobby-item{background:rgba(255,255,255,0.06);padding:12px 18px;border-radius:18px;font-size:16px;display:flex;align-items:center;gap:8px;transition:.3s;}
 .hobby-item:hover{background:rgba(0,255,153,0.2);cursor:pointer;}
+
 .achievements{margin-top:40px;}
 .achievements .section-title{color:#fff;font-size:26px;font-weight:700;margin-bottom:20px;}
 .achievement-list{display:flex;overflow-x:auto;gap:15px;padding-bottom:10px;}
-.achievement-list::-webkit-scrollbar{height:8px;}
-.achievement-list::-webkit-scrollbar-thumb{background:#00ff99;border-radius:5px;}
 .achievement-card{min-width:180px;background:rgba(255,255,255,0.05);border-radius:15px;padding:10px;text-align:center;flex-shrink:0;}
 .achievement-card img{width:100%;height:100px;border-radius:12px;object-fit:cover;margin-bottom:10px;}
 .achievement-card .achievement-text{font-size:15px;color:#fff;font-weight:500;}
+
 .gallery{margin-top:40px;}
 .gallery .section-title{color:#fff;font-size:26px;font-weight:700;margin-bottom:20px;}
 .gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
 .gallery-grid img{width:100%;border-radius:12px;object-fit:cover;cursor:pointer;transition:.3s;}
 .gallery-grid img:hover{transform:scale(1.05);}
+
 .quote-box{margin-top:40px;padding:20px 15px;border-radius:20px;background:rgba(0,255,153,0.08);color:#00ff99;font-size:16px;font-style:italic;line-height:1.5;}
 .poll{margin-top:40px;padding:15px 10px;border-radius:20px;background:rgba(255,255,255,0.05);}
 .poll-title{font-size:18px;color:#00ff99;font-weight:600;margin-bottom:12px;}
 .poll-options{display:flex;justify-content:center;gap:15px;}
 .poll-btn{padding:10px 18px;border:none;border-radius:12px;background:rgba(0,255,153,0.2);color:#fff;cursor:pointer;font-weight:600;transition:.3s;}
 .poll-btn:hover{background:#00ff99;color:#000;}
-#poll-text{margin-top:15px;font-weight:600;font-size:15px;color:#00ff99;transition:all .3s ease;}
-/* Academics Button */
+#poll-text{margin-top:15px;font-weight:600;font-size:15px;color:#00ff99;}
+
 .academics{margin-top:50px;text-align:center;}
 .academics .section-title{color:#fff;font-size:26px;font-weight:700;margin-bottom:15px;}
-.academics-btn{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  padding:14px 22px;
-  margin:10px 0;
-  border-radius:25px;
-  background:transparent;
-  border:2px solid #00ff99;
-  color:#00ff99;
-  font-weight:600;
-  font-size:16px;
-  text-decoration:none;
-  transition:.3s;
-  box-shadow:0 0 10px rgba(0,255,153,0.5);
-  cursor:pointer;
-}
-.academics-btn i{font-size:22px;}
-.academics-btn:hover{
-  background:#00ff99;
-  color:#000;
-  box-shadow:0 0 20px rgba(0,255,153,0.8);
-  transform:translateY(-3px);
-}
+.academics-btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;margin:10px 0;border-radius:25px;background:transparent;border:2px solid #00ff99;color:#00ff99;font-weight:600;font-size:16px;text-decoration:none;transition:.3s;box-shadow:0 0 10px rgba(0,255,153,0.5);cursor:pointer;}
+.academics-btn:hover{background:#00ff99;color:#000;box-shadow:0 0 20px rgba(0,255,153,0.8);transform:translateY(-3px);}
 .academics-overview{margin-top:15px;padding:12px 15px;border-radius:12px;background:rgba(255,255,255,0.05);text-align:left;font-size:14px;color:#fff;}
 .academics-overview .overview-item{margin-bottom:6px;display:flex;justify-content:space-between;}
 
-/* Responsive Adjustments */
 @media(min-width: 600px) {
   .container { max-width: 600px; }
   .grid { grid-template-columns: repeat(2, 1fr); }
-  .achievement-list { justify-content:flex-start; }
-  .hobby-list { justify-content:flex-start; }
   .gallery-grid { grid-template-columns: repeat(3, 1fr); }
 }
-
 @media(min-width: 900px) {
   .container { max-width: 900px; }
   .grid { grid-template-columns: repeat(4, 1fr); }
-  .achievement-list { overflow-x: visible; }
   .gallery-grid { grid-template-columns: repeat(4, 1fr); }
-  .timeline-wrapper { padding-bottom:0; }
-}
-.timeline-wrapper {
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  scrollbar-color: #00ff99 rgba(255,255,255,0.1);
 }
 </style>
 </head>
@@ -129,7 +109,7 @@ body{min-height:100vh;background:radial-gradient(circle at top,#0f1f1a,#050505 7
   </div>
   <div class="name">Maksudul Munna</div>
   <div class="tagline">ARTIST • VISIONARY • REBEL</div>
-  <div class="vibe">⚡ "Ever tried. Ever failed. No matter. Try again. Fail again. Fail better."  🌙</div>
+  <div class="vibe">⚡ "Ever tried. Ever failed. No matter. Try again. Fail again. Fail better." 🌙</div>
 
   <div class="info-row">
     <div class="info-box">🕒 ∞</div>
@@ -165,6 +145,30 @@ body{min-height:100vh;background:radial-gradient(circle at top,#0f1f1a,#050505 7
     <button class="fact-btn" onclick="nextFact()">Another Fact</button>
   </div>
 
+  <div class="experience-section">
+    <div class="section-title">Work Experience</div>
+    <div class="timeline-container">
+      <div class="experience-item">
+        <div class="exp-date">2024 – Present</div>
+        <div class="exp-role">Frontend Developer</div>
+        <div class="exp-company">Creative Studio</div>
+        <div class="exp-desc">Building responsive UI, animations, and modern landing pages using HTML, CSS, and JavaScript.</div>
+      </div>
+      <div class="experience-item">
+        <div class="exp-date">2023 – 2024</div>
+        <div class="exp-role">Web Developer</div>
+        <div class="exp-company">Startup Agency</div>
+        <div class="exp-desc">Developed client websites, optimized performance, and implemented clean UI/UX designs.</div>
+      </div>
+      <div class="experience-item">
+        <div class="exp-date">2022 – 2023</div>
+        <div class="exp-role">Junior Developer</div>
+        <div class="exp-company">Freelance</div>
+        <div class="exp-desc">Worked on small projects, landing pages, and learned modern web development best practices.</div>
+      </div>
+    </div>
+  </div>
+
   <div class="life-section">
     <div class="section-title">My Life</div>
     <div class="timeline-wrapper">
@@ -175,28 +179,13 @@ body{min-height:100vh;background:radial-gradient(circle at top,#0f1f1a,#050505 7
         </div>
         <div class="timeline-event">
           <img loading="lazy" src="https://i.ibb.co.com/4R64MhTW/QVZl-Um-I2b-Uh-PUUdtd19ue-A.jpg">
-          <div class="event-text">Started My College Life(2024)</div>
+          <div class="event-text">Started My College Life (2024)</div>
         </div>
         <div class="timeline-event">
           <img loading="lazy" src="https://i.ibb.co.com/tMK5m1y8/retouch-2025083016274126.jpg">
-          <div class="event-text">Passed HSC Exam (GPA-5) <br></>with Full Free Scholarship (2025)</div>
+          <div class="event-text">Passed HSC Exam (GPA-5) (2025)</div>
         </div>
-      
-      <div class="timeline-event">
-          <img loading="lazy" src="https://i.ibb.co.com/rKLMty2z/QVZlb-HJJa-Eo1-REJ3c-HVFYQ.jpg">
-          <div class="event-text">Got Perfect Grade certificate <br> (From College)</></div>
-        </div>
-      
-      <div class="timeline-event">
-          <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/6/67/Learning_Curve_--_Coming_Soon_Placeholder.png">
-          <div class="event-text">Coming Soon</div>
-        </div>
-      
-      
-      
-    
-    
-        </div> 
+      </div>
     </div>
   </div>
 
@@ -215,31 +204,12 @@ body{min-height:100vh;background:radial-gradient(circle at top,#0f1f1a,#050505 7
     <div class="achievement-list">
       <div class="achievement-card">
         <img loading="lazy" src="https://i.ibb.co.com/4wvGqR5k/HSC-GPA-5-OG-Image-2025.png">
-        <div class="achievement-text">Presidency University & Prothom Alo <br>(Certificate)</></div>
+        <div class="achievement-text">GPA-5 Certificate</div>
       </div>
       <div class="achievement-card">
         <img loading="lazy" src="https://i.ibb.co.com/9k32gzsb/certificate-1.png">
-        <div class="achievement-text">Certificate Of Excellence</div>
+        <div class="achievement-text">Excellence Award</div>
       </div>
-      <div class="achievement-card">
-        <img loading="lazy" src="https://i.ibb.co.com/20PsC5GZ/WE.jpg">
-        <div class="achievement-text">Science Fair Participation 2023</div>
-      </div>
-    
-    <div class="achievement-card">
-        <img loading="lazy" src="https://i.ibb.co.com/0yVpJzwN/images.png">
-        <div class="achievement-text">Google Career Certificates <br></>(Foundational Knowledge)</div>
-      </div>
-    
-    <div class="achievement-card">
-        <img loading="lazy" src="https://i.ibb.co.com/Cswzb8Kz/share.png">
-        <div class="achievement-text">Google Developer Badges<br></> (Logic & Coding)</div>
-      </div>
-    
-    
-    
-    
-    
     </div>
   </div>
 
@@ -250,30 +220,11 @@ body{min-height:100vh;background:radial-gradient(circle at top,#0f1f1a,#050505 7
       <img loading="lazy" src="https://i.ibb.co.com/k2N7p3bb/IMG-20251230-012241.jpg">
       <img loading="lazy" src="https://i.ibb.co.com/9dqCzKG/FB-IMG-3047310916701312656.jpg">
       <img loading="lazy" src="https://i.ibb.co.com/YTPnmC9f/retouch-2024122023020602.jpg">
-      <img loading="lazy" src="https://i.ibb.co.com/XrcX4khr/IMG-20251214-202209.jpg">
-      <img loading="lazy" src="https://i.ibb.co.com/KjL397XQ/IMG-20251207-205550.jpg">
-      <img loading="lazy" src="https://i.ibb.co.com/qM6KKnzV/retouch-2024122015034815.jpg">
-      <img loading="lazy" src="https://i.ibb.co.com/FLBzpSNL/Screenshot-2024-12-12-11-00-07-110-com-facebook-katana.png">
-      <img loading="lazy" src="https://i.ibb.co.com/HT9cxbpf/retouch-2025083016274126.jpg">
-      <img loading="lazy" src="https://i.ibb.co.com/gb4K8kwC/retouch-2024091710143985.jpg">
-      <img loading="lazy" src="https://i.ibb.co.com/XxcczpCX/Snapchat-1585967114.jpg">
-      <img loading="lazy" src="https://i.ibb.co.com/1GQwyQvK/Snapchat-368490589.jpg">
-      <img loading="lazy" src="https://i.ibb.co.com/Y45L0spY/retouch-2025112414394377.jpg">
-      <img loading="lazy" src="https://i.ibb.co.com/Tx1zmWWh/retouch-2024091800470977.jpg">
-      <img loading="lazy" src="https://i.ibb.co.com/hqhnw1f/FB-IMG-1718116442789.jpg">
-      <img loading="lazy" src="https://i.ibb.co.com/HpXv4SvV/Snapchat-2136611923.jpg">
-      <img loading="lazy" src="https://i.ibb.co.com/fV6wdSFP/retouch-2025082222540541.jpg">
-      <img loading="lazy" src="https://i.ibb.co.com/LHx8z9P/FB-IMG-1718116480985.jpg">
-      <img loading="lazy" src="">
-      <img loading="lazy" src="">
-      <img loading="lazy" src="">
-      <img loading="lazy" src="">
-      
-       </div>
+    </div>
   </div>
 
   <div class="quote-box">
-    "Ever tried. Ever failed. No matter. Try again. Fail again. Fail better."<br>&nbsp;&nbsp;&nbsp;&nbsp;~ Samuel Beckett
+    "Ever tried. Ever failed. No matter. Try again. Fail again. Fail better."<br>~ Samuel Beckett
   </div>
 
   <div class="poll">
@@ -285,27 +236,40 @@ body{min-height:100vh;background:radial-gradient(circle at top,#0f1f1a,#050505 7
     <div id="poll-text"></div>
   </div>
 
-  <!-- Academics & Admission Results -->
   <div class="academics">
     <div class="section-title">📚 Academics & Admissions</div>
-
-    <!-- Button style -->
     <a href="https://maxudul.github.io/Maksudul_Munna/" target="_blank" class="academics-btn">
       <i class="fas fa-graduation-cap"></i>
-      <span>View My Academic & Admission Results</span>
+      <span>View Results</span>
     </a>
-
-    <!-- Quick Overview -->
     <div class="academics-overview">
-      <div class="overview-item"><strong>SUST A-Unit:</strong> Pending</div>
-      <div class="overview-item"><strong>Jagannath University:</strong> 6798th</div>
-      <div class="overview-item"><strong>Jahangirnagar University:</strong> 1589th</div>
-      <div class="overview-item"><strong>Chittagong University:</strong> 5886th</div>
-      <div class="overview-item"><strong>Comilla University:</strong> Pending</div>
+      <div class="overview-item"><strong>Jagannath Uni:</strong> 6798th</div>
+      <div class="overview-item"><strong>Jahangirnagar:</strong> 1589th</div>
+      <div class="overview-item"><strong>Chittagong Uni:</strong> 5886th</div>
     </div>
   </div>
 
 </div>
 
 <script>
-const facts=["I love coding late at night.","
+const facts = [
+  "I love coding late at night.",
+  "I am a tech enthusiast and story writer.",
+  "I passed my HSC with a GPA-5!",
+  "I am an introvert with a visionary mind.",
+  "I enjoy turning ideas into reality one pixel at a time."
+];
+
+let currentFactIndex = 0;
+function nextFact() {
+  currentFactIndex = (currentFactIndex + 1) % facts.length;
+  document.getElementById('fact-text').innerText = facts[currentFactIndex];
+}
+
+function showPollText(type) {
+  const text = type === 'coffee' ? "Coffee ☕: The fuel for late-night coding!" : "Tea 🍵: Perfect for story writing sessions.";
+  document.getElementById('poll-text').innerText = text;
+}
+</script>
+</body>
+</html>

@@ -31,11 +31,11 @@ body{min-height:100vh;background:radial-gradient(circle at top,#0f1f1a,#050505 7
 .social-item:hover{transform:translateY(-3px);box-shadow:0 0 25px rgba(0,255,153,.35);}
 .fact-box{margin-top:30px;padding:20px 15px;border-radius:20px;background:rgba(255,255,255,0.06);font-size:15px;letter-spacing:1px;color:#fff;line-height:1.5;text-align:center;}
 .fact-title{color:#00ff99;font-weight:600;margin-bottom:10px;font-size:16px;}
-.fact-text{margin-bottom:15px;font-style:italic; min-height: 45px;}
+.fact-text{margin-bottom:15px;font-style:italic;min-height:45px;}
 .fact-btn{background:#00ff99;color:#000;border:none;border-radius:12px;padding:8px 16px;cursor:pointer;font-weight:600;transition:.3s;}
 .fact-btn:hover{background:#00cc7a;}
 
-/* Work Experience Styles */
+/* --- WORK EXPERIENCE STYLES --- */
 .experience-section {margin-top: 50px; text-align: left;}
 .experience-section .section-title {color: #fff; font-size: 26px; font-weight: 700; margin-bottom: 25px; text-align: center;}
 .timeline-container {position: relative; padding-left: 30px; margin: 0 10px;}
@@ -49,7 +49,7 @@ body{min-height:100vh;background:radial-gradient(circle at top,#0f1f1a,#050505 7
 
 .life-section{margin-top:40px;text-align:center;}
 .life-section .section-title{color:#fff;font-size:26px;font-weight:700;margin-bottom:25px;}
-.timeline-wrapper{overflow-x:auto;padding-bottom:10px;}
+.timeline-wrapper{overflow-x:auto;padding-bottom:10px;scrollbar-width: thin;scrollbar-color: #00ff99 rgba(255,255,255,0.1);}
 .timeline{display:flex;gap:20px;padding-bottom:10px;}
 .timeline-event{min-width:180px;background:rgba(255,255,255,0.05);border-radius:15px;padding:10px;text-align:center;flex-shrink:0;}
 .timeline-event img{width:100%;height:120px;border-radius:12px;object-fit:cover;margin-bottom:10px;}
@@ -63,7 +63,7 @@ body{min-height:100vh;background:radial-gradient(circle at top,#0f1f1a,#050505 7
 
 .achievements{margin-top:40px;}
 .achievements .section-title{color:#fff;font-size:26px;font-weight:700;margin-bottom:20px;}
-.achievement-list{display:flex;overflow-x:auto;gap:15px;padding-bottom:10px;}
+.achievement-list{display:flex;overflow-x:auto;gap:15px;padding-bottom:10px;scrollbar-width: thin;scrollbar-color: #00ff99 rgba(255,255,255,0.1);}
 .achievement-card{min-width:180px;background:rgba(255,255,255,0.05);border-radius:15px;padding:10px;text-align:center;flex-shrink:0;}
 .achievement-card img{width:100%;height:100px;border-radius:12px;object-fit:cover;margin-bottom:10px;}
 .achievement-card .achievement-text{font-size:15px;color:#fff;font-weight:500;}
@@ -71,7 +71,7 @@ body{min-height:100vh;background:radial-gradient(circle at top,#0f1f1a,#050505 7
 .gallery{margin-top:40px;}
 .gallery .section-title{color:#fff;font-size:26px;font-weight:700;margin-bottom:20px;}
 .gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
-.gallery-grid img{width:100%;border-radius:12px;object-fit:cover;cursor:pointer;transition:.3s;}
+.gallery-grid img{width:100%;aspect-ratio:1/1;border-radius:12px;object-fit:cover;cursor:pointer;transition:.3s;}
 .gallery-grid img:hover{transform:scale(1.05);}
 
 .quote-box{margin-top:40px;padding:20px 15px;border-radius:20px;background:rgba(0,255,153,0.08);color:#00ff99;font-size:16px;font-style:italic;line-height:1.5;}
@@ -183,7 +183,15 @@ body{min-height:100vh;background:radial-gradient(circle at top,#0f1f1a,#050505 7
         </div>
         <div class="timeline-event">
           <img loading="lazy" src="https://i.ibb.co.com/tMK5m1y8/retouch-2025083016274126.jpg">
-          <div class="event-text">Passed HSC Exam (GPA-5) (2025)</div>
+          <div class="event-text">Passed HSC Exam (GPA-5)<br> with Full Free Scholarship (2025)</div>
+        </div>
+        <div class="timeline-event">
+          <img loading="lazy" src="https://i.ibb.co.com/rKLMty2z/QVZlb-HJJa-Eo1-REJ3c-HVFYQ.jpg">
+          <div class="event-text">Got Perfect Grade certificate<br> (From College)</div>
+        </div>
+        <div class="timeline-event">
+          <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/6/67/Learning_Curve_--_Coming_Soon_Placeholder.png">
+          <div class="event-text">Coming Soon</div>
         </div>
       </div>
     </div>
@@ -204,11 +212,23 @@ body{min-height:100vh;background:radial-gradient(circle at top,#0f1f1a,#050505 7
     <div class="achievement-list">
       <div class="achievement-card">
         <img loading="lazy" src="https://i.ibb.co.com/4wvGqR5k/HSC-GPA-5-OG-Image-2025.png">
-        <div class="achievement-text">GPA-5 Certificate</div>
+        <div class="achievement-text">Presidency University & Prothom Alo<br> (Certificate)</div>
       </div>
       <div class="achievement-card">
         <img loading="lazy" src="https://i.ibb.co.com/9k32gzsb/certificate-1.png">
-        <div class="achievement-text">Excellence Award</div>
+        <div class="achievement-text">Certificate Of Excellence</div>
+      </div>
+      <div class="achievement-card">
+        <img loading="lazy" src="https://i.ibb.co.com/20PsC5GZ/WE.jpg">
+        <div class="achievement-text">Science Fair Participation (2023)</div>
+      </div>
+      <div class="achievement-card">
+        <img loading="lazy" src="https://i.ibb.co.com/0yVpJzwN/images.png">
+        <div class="achievement-text">Google Career Certificates <br>(Foundational)</div>
+      </div>
+      <div class="achievement-card">
+        <img loading="lazy" src="https://i.ibb.co.com/Cswzb8Kz/share.png">
+        <div class="achievement-text">Google Developer Badges <br>(Logic & Coding)</div>
       </div>
     </div>
   </div>
@@ -220,11 +240,25 @@ body{min-height:100vh;background:radial-gradient(circle at top,#0f1f1a,#050505 7
       <img loading="lazy" src="https://i.ibb.co.com/k2N7p3bb/IMG-20251230-012241.jpg">
       <img loading="lazy" src="https://i.ibb.co.com/9dqCzKG/FB-IMG-3047310916701312656.jpg">
       <img loading="lazy" src="https://i.ibb.co.com/YTPnmC9f/retouch-2024122023020602.jpg">
+      <img loading="lazy" src="https://i.ibb.co.com/XrcX4khr/IMG-20251214-202209.jpg">
+      <img loading="lazy" src="https://i.ibb.co.com/KjL397XQ/IMG-20251207-205550.jpg">
+      <img loading="lazy" src="https://i.ibb.co.com/qM6KKnzV/retouch-2024122015034815.jpg">
+      <img loading="lazy" src="https://i.ibb.co.com/FLBzpSNL/Screenshot-2024-12-12-11-00-07-110-com-facebook-katana.png">
+      <img loading="lazy" src="https://i.ibb.co.com/HT9cxbpf/retouch-2025083016274126.jpg">
+      <img loading="lazy" src="https://i.ibb.co.com/gb4K8kwC/retouch-2024091710143985.jpg">
+      <img loading="lazy" src="https://i.ibb.co.com/XxcczpCX/Snapchat-1585967114.jpg">
+      <img loading="lazy" src="https://i.ibb.co.com/1GQwyQvK/Snapchat-368490589.jpg">
+      <img loading="lazy" src="https://i.ibb.co.com/Y45L0spY/retouch-2025112414394377.jpg">
+      <img loading="lazy" src="https://i.ibb.co.com/Tx1zmWWh/retouch-2024091800470977.jpg">
+      <img loading="lazy" src="https://i.ibb.co.com/hqhnw1f/FB-IMG-1718116442789.jpg">
+      <img loading="lazy" src="https://i.ibb.co.com/HpXv4SvV/Snapchat-2136611923.jpg">
+      <img loading="lazy" src="https://i.ibb.co.com/fV6wdSFP/retouch-2025082222540541.jpg">
+      <img loading="lazy" src="https://i.ibb.co.com/LHx8z9P/FB-IMG-1718116480985.jpg">
     </div>
   </div>
 
   <div class="quote-box">
-    "Ever tried. Ever failed. No matter. Try again. Fail again. Fail better."<br>~ Samuel Beckett
+    "Ever tried. Ever failed. No matter. Try again. Fail again. Fail better."<br>&nbsp;&nbsp;&nbsp;&nbsp;~ Samuel Beckett
   </div>
 
   <div class="poll">
@@ -240,12 +274,14 @@ body{min-height:100vh;background:radial-gradient(circle at top,#0f1f1a,#050505 7
     <div class="section-title">📚 Academics & Admissions</div>
     <a href="https://maxudul.github.io/Maksudul_Munna/" target="_blank" class="academics-btn">
       <i class="fas fa-graduation-cap"></i>
-      <span>View Results</span>
+      <span>View Academic & Admission Results</span>
     </a>
     <div class="academics-overview">
-      <div class="overview-item"><strong>Jagannath Uni:</strong> 6798th</div>
-      <div class="overview-item"><strong>Jahangirnagar:</strong> 1589th</div>
-      <div class="overview-item"><strong>Chittagong Uni:</strong> 5886th</div>
+      <div class="overview-item"><strong>SUST A-Unit:</strong> Pending</div>
+      <div class="overview-item"><strong>Jagannath University:</strong> 6798th</div>
+      <div class="overview-item"><strong>Jahangirnagar University:</strong> 1589th</div>
+      <div class="overview-item"><strong>Chittagong University:</strong> 5886th</div>
+      <div class="overview-item"><strong>Comilla University:</strong> Pending</div>
     </div>
   </div>
 
@@ -256,8 +292,8 @@ const facts = [
   "I love coding late at night.",
   "I am a tech enthusiast and story writer.",
   "I passed my HSC with a GPA-5!",
-  "I am an introvert with a visionary mind.",
-  "I enjoy turning ideas into reality one pixel at a time."
+  "I'm turning ideas into reality, one pixel at a time.",
+  "I believe in failing better every single time."
 ];
 
 let currentFactIndex = 0;
@@ -266,9 +302,13 @@ function nextFact() {
   document.getElementById('fact-text').innerText = facts[currentFactIndex];
 }
 
-function showPollText(type) {
-  const text = type === 'coffee' ? "Coffee ☕: The fuel for late-night coding!" : "Tea 🍵: Perfect for story writing sessions.";
-  document.getElementById('poll-text').innerText = text;
+function showPollText(choice) {
+  const pollText = document.getElementById('poll-text');
+  if (choice === 'coffee') {
+    pollText.innerText = "Excellent choice! Coffee keeps the code running. ☕🔥";
+  } else {
+    pollText.innerText = "Classic! Tea is the secret to a calm mind. 🍵✨";
+  }
 }
 </script>
 </body>

@@ -29,27 +29,16 @@ body{min-height:100vh;background:radial-gradient(circle at top,#0f1f1a,#050505 7
 .social-item{display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:18px;background:rgba(255,255,255,0.06);color:#00ff99;text-decoration:none;font-size:15px;transition:.3s;}
 .social-item i{font-size:20px;width:26px;text-align:center;}
 .social-item:hover{transform:translateY(-3px);box-shadow:0 0 25px rgba(0,255,153,.35);}
+
 .fact-box{margin-top:30px;padding:20px 15px;border-radius:20px;background:rgba(255,255,255,0.06);font-size:15px;letter-spacing:1px;color:#fff;line-height:1.5;text-align:center;}
 .fact-title{color:#00ff99;font-weight:600;margin-bottom:10px;font-size:16px;}
-.fact-text{margin-bottom:15px;font-style:italic;min-height:45px;}
+.fact-text{margin-bottom:15px;font-style:italic;min-height:45px; transition: 0.3s ease;}
 .fact-btn{background:#00ff99;color:#000;border:none;border-radius:12px;padding:8px 16px;cursor:pointer;font-weight:600;transition:.3s;}
 .fact-btn:hover{background:#00cc7a;}
 
-/* --- WORK EXPERIENCE STYLES --- */
-.experience-section {margin-top: 50px; text-align: left;}
-.experience-section .section-title {color: #fff; font-size: 26px; font-weight: 700; margin-bottom: 25px; text-align: center;}
-.timeline-container {position: relative; padding-left: 30px; margin: 0 10px;}
-.timeline-container::before {content: ''; position: absolute; left: 5px; top: 5px; bottom: 5px; width: 2px; background: #00ff99; box-shadow: 0 0 10px rgba(0, 255, 153, 0.5);}
-.experience-item {position: relative; margin-bottom: 30px;}
-.experience-item::before {content: ''; position: absolute; left: -31px; top: 6px; width: 14px; height: 14px; background: #00ff99; border-radius: 50%; box-shadow: 0 0 15px #00ff99, 0 0 30px rgba(0, 255, 153, 0.6); z-index: 1;}
-.exp-date {font-size: 14px; color: #a0a0a0; margin-bottom: 4px;}
-.exp-role {font-size: 18px; font-weight: 700; color: #fff;}
-.exp-company {font-size: 15px; color: #00ff99; margin-bottom: 10px;}
-.exp-desc {font-size: 14px; line-height: 1.5; color: rgba(255, 255, 255, 0.8);}
-
 .life-section{margin-top:40px;text-align:center;}
 .life-section .section-title{color:#fff;font-size:26px;font-weight:700;margin-bottom:25px;}
-.timeline-wrapper{overflow-x:auto;padding-bottom:10px;scrollbar-width: thin;scrollbar-color: #00ff99 rgba(255,255,255,0.1);}
+.timeline-wrapper{overflow-x:auto;padding-bottom:10px;}
 .timeline{display:flex;gap:20px;padding-bottom:10px;}
 .timeline-event{min-width:180px;background:rgba(255,255,255,0.05);border-radius:15px;padding:10px;text-align:center;flex-shrink:0;}
 .timeline-event img{width:100%;height:120px;border-radius:12px;object-fit:cover;margin-bottom:10px;}
@@ -63,7 +52,7 @@ body{min-height:100vh;background:radial-gradient(circle at top,#0f1f1a,#050505 7
 
 .achievements{margin-top:40px;}
 .achievements .section-title{color:#fff;font-size:26px;font-weight:700;margin-bottom:20px;}
-.achievement-list{display:flex;overflow-x:auto;gap:15px;padding-bottom:10px;scrollbar-width: thin;scrollbar-color: #00ff99 rgba(255,255,255,0.1);}
+.achievement-list{display:flex;overflow-x:auto;gap:15px;padding-bottom:10px;}
 .achievement-card{min-width:180px;background:rgba(255,255,255,0.05);border-radius:15px;padding:10px;text-align:center;flex-shrink:0;}
 .achievement-card img{width:100%;height:100px;border-radius:12px;object-fit:cover;margin-bottom:10px;}
 .achievement-card .achievement-text{font-size:15px;color:#fff;font-weight:500;}
@@ -71,7 +60,7 @@ body{min-height:100vh;background:radial-gradient(circle at top,#0f1f1a,#050505 7
 .gallery{margin-top:40px;}
 .gallery .section-title{color:#fff;font-size:26px;font-weight:700;margin-bottom:20px;}
 .gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
-.gallery-grid img{width:100%;aspect-ratio:1/1;border-radius:12px;object-fit:cover;cursor:pointer;transition:.3s;}
+.gallery-grid img{width:100%;border-radius:12px;object-fit:cover;cursor:pointer;transition:.3s;aspect-ratio: 1/1;}
 .gallery-grid img:hover{transform:scale(1.05);}
 
 .quote-box{margin-top:40px;padding:20px 15px;border-radius:20px;background:rgba(0,255,153,0.08);color:#00ff99;font-size:16px;font-style:italic;line-height:1.5;}
@@ -141,32 +130,8 @@ body{min-height:100vh;background:radial-gradient(circle at top,#0f1f1a,#050505 7
 
   <div class="fact-box">
     <div class="fact-title">• Did You Know?</div>
-    <div class="fact-text" id="fact-text">I love coding late at night.</div>
+    <div class="fact-text" id="fact-text">I'm in love with a Devil! 😈</div>
     <button class="fact-btn" onclick="nextFact()">Another Fact</button>
-  </div>
-
-  <div class="experience-section">
-    <div class="section-title">Work Experience</div>
-    <div class="timeline-container">
-      <div class="experience-item">
-        <div class="exp-date">2024 – Present</div>
-        <div class="exp-role">Frontend Developer</div>
-        <div class="exp-company">Creative Studio</div>
-        <div class="exp-desc">Building responsive UI, animations, and modern landing pages using HTML, CSS, and JavaScript.</div>
-      </div>
-      <div class="experience-item">
-        <div class="exp-date">2023 – 2024</div>
-        <div class="exp-role">Web Developer</div>
-        <div class="exp-company">Startup Agency</div>
-        <div class="exp-desc">Developed client websites, optimized performance, and implemented clean UI/UX designs.</div>
-      </div>
-      <div class="experience-item">
-        <div class="exp-date">2022 – 2023</div>
-        <div class="exp-role">Junior Developer</div>
-        <div class="exp-company">Freelance</div>
-        <div class="exp-desc">Worked on small projects, landing pages, and learned modern web development best practices.</div>
-      </div>
-    </div>
   </div>
 
   <div class="life-section">
@@ -183,11 +148,11 @@ body{min-height:100vh;background:radial-gradient(circle at top,#0f1f1a,#050505 7
         </div>
         <div class="timeline-event">
           <img loading="lazy" src="https://i.ibb.co.com/tMK5m1y8/retouch-2025083016274126.jpg">
-          <div class="event-text">Passed HSC Exam (GPA-5)<br> with Full Free Scholarship (2025)</div>
+          <div class="event-text">Passed HSC Exam (GPA-5) <br></>with Full Free Scholarship (2025)</div>
         </div>
         <div class="timeline-event">
           <img loading="lazy" src="https://i.ibb.co.com/rKLMty2z/QVZlb-HJJa-Eo1-REJ3c-HVFYQ.jpg">
-          <div class="event-text">Got Perfect Grade certificate<br> (From College)</div>
+          <div class="event-text">Got Perfect Grade certificate<br></> (From College)</div>
         </div>
         <div class="timeline-event">
           <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/6/67/Learning_Curve_--_Coming_Soon_Placeholder.png">
@@ -212,7 +177,7 @@ body{min-height:100vh;background:radial-gradient(circle at top,#0f1f1a,#050505 7
     <div class="achievement-list">
       <div class="achievement-card">
         <img loading="lazy" src="https://i.ibb.co.com/4wvGqR5k/HSC-GPA-5-OG-Image-2025.png">
-        <div class="achievement-text">Presidency University & Prothom Alo<br> (Certificate)</div>
+        <div class="achievement-text">Presidency University & Prothom Alo<br></> (Certificate)</div>
       </div>
       <div class="achievement-card">
         <img loading="lazy" src="https://i.ibb.co.com/9k32gzsb/certificate-1.png">
@@ -224,11 +189,11 @@ body{min-height:100vh;background:radial-gradient(circle at top,#0f1f1a,#050505 7
       </div>
       <div class="achievement-card">
         <img loading="lazy" src="https://i.ibb.co.com/0yVpJzwN/images.png">
-        <div class="achievement-text">Google Career Certificates <br>(Foundational)</div>
+        <div class="achievement-text">Google Career Certificates<br></> (Foundational)</div>
       </div>
       <div class="achievement-card">
         <img loading="lazy" src="https://i.ibb.co.com/Cswzb8Kz/share.png">
-        <div class="achievement-text">Google Developer Badges <br>(Logic & Coding)</div>
+        <div class="achievement-text">Google Developer Badges<br></> (Logic & Coding)</div>
       </div>
     </div>
   </div>
@@ -274,7 +239,7 @@ body{min-height:100vh;background:radial-gradient(circle at top,#0f1f1a,#050505 7
     <div class="section-title">📚 Academics & Admissions</div>
     <a href="https://maxudul.github.io/Maksudul_Munna/" target="_blank" class="academics-btn">
       <i class="fas fa-graduation-cap"></i>
-      <span>View Academic & Admission Results</span>
+      <span>View My Academic & Admission Results</span>
     </a>
     <div class="academics-overview">
       <div class="overview-item"><strong>SUST A-Unit:</strong> Pending</div>
@@ -289,17 +254,26 @@ body{min-height:100vh;background:radial-gradient(circle at top,#0f1f1a,#050505 7
 
 <script>
 const facts = [
-  "I love coding late at night.",
-  "I am a tech enthusiast and story writer.",
-  "I passed my HSC with a GPA-5!",
-  "I'm turning ideas into reality, one pixel at a time.",
-  "I believe in failing better every single time."
+  "I'm in love with a Devil! 😈",
+  "I like to watch cartoons! 📺",
+  "I'm an anime lover 🏯",
+  "I love coding late at night. 💻",
+  "I am a tech enthusiast and story writer. ✍️",
+  "I passed my HSC with a GPA-5! 🎓",
+  "I believe in failing better every single time. 🚀"
 ];
 
 let currentFactIndex = 0;
+
 function nextFact() {
-  currentFactIndex = (currentFactIndex + 1) % facts.length;
-  document.getElementById('fact-text').innerText = facts[currentFactIndex];
+  const factElement = document.getElementById('fact-text');
+  factElement.style.opacity = 0;
+  
+  setTimeout(() => {
+    currentFactIndex = (currentFactIndex + 1) % facts.length;
+    factElement.innerText = facts[currentFactIndex];
+    factElement.style.opacity = 1;
+  }, 300);
 }
 
 function showPollText(choice) {

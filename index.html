@@ -20,14 +20,22 @@ body{min-height:100vh;background:radial-gradient(circle at top,#0f1f1a,#050505 7
 .philosophy{font-size: 12px; color: #00ff99; font-style: italic; margin-top: 5px; opacity: 0.9;}
 .info-row{margin-top:15px;display:flex;justify-content:center;gap:12px;}
 .info-box{padding:8px 14px;border-radius:20px;background:rgba(255,255,255,0.07);font-size:13px;}
-.music{margin:20px auto;padding:12px;border-radius:18px;background:rgba(255,255,255,0.07);display:flex;align-items:center;gap:12px;}
-.music img{width:45px;height:45px;border-radius:12px;object-fit:cover;}
-.music-title{text-align:left;font-size:14px;}
+
 .bio{margin:25px 10px;font-size:14px;opacity:.85;line-height:1.6;}
 
 /* Main Grid Layouts */
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:20px;}
 .card{padding:25px 15px;border-radius:20px;background:rgba(255,255,255,0.06);letter-spacing:1px;font-size:15px;display:flex;align-items:center;justify-content:center;gap:8px;}
+
+/* UPDATED MEDIA GRID */
+.section-title{color:#fff;font-size:24px;font-weight:700;margin:40px 0 20px;}
+.media-grid {display:grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 30px;}
+.media-card {background: rgba(255,255,255,0.05); border-radius: 18px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); transition: 0.3s;}
+.media-card:hover {border-color: #00ff99; transform: translateY(-5px);}
+.media-card img {width: 100%; height: 120px; object-fit: cover;}
+.media-info {padding: 10px; text-align: left;}
+.media-info strong {display: block; font-size: 13px; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.media-info small {font-size: 11px; color: #00ff99; opacity: 0.8;}
 
 .social-list{margin-top:30px;display:flex;flex-direction:column;gap:14px;}
 .social-item{display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:18px;background:rgba(255,255,255,0.06);color:#00ff99;text-decoration:none;font-size:15px;transition:.3s;}
@@ -40,36 +48,28 @@ body{min-height:100vh;background:radial-gradient(circle at top,#0f1f1a,#050505 7
 .fact-btn{background:#00ff99;color:#000;border:none;border-radius:12px;padding:8px 16px;cursor:pointer;font-weight:600;transition:.3s;}
 .fact-btn:hover{background:#00cc7a;}
 
-/* VERTICAL GRID FOR LIFE SECTION */
-.life-section{margin-top:40px;text-align:center;}
-.section-title{color:#fff;font-size:26px;font-weight:700;margin-bottom:25px;}
 .life-grid {display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:20px;}
 .life-event {background:rgba(255,255,255,0.05);border-radius:15px;padding:12px;text-align:center;border: 1px solid rgba(255,255,255,0.1);display:flex;flex-direction:column;gap:8px;transition:0.3s;}
 .life-event:hover {border-color: #00ff99; transform: translateY(-5px);}
-.life-event img{width:100%;height:110px;border-radius:12px;object-fit:cover;}
+.life-event img{width:100%; height:110px; border-radius:12px; object-fit:cover;}
 .life-event .event-text{color:#fff;font-size:13px;font-weight:500;line-height:1.4;flex-grow:1;display:flex;align-items:center;justify-content:center;}
 
-.hobbies{margin-top:40px;}
 .hobby-list{display:flex;justify-content:center;flex-wrap:wrap;gap:15px;}
 .hobby-item{background:rgba(255,255,255,0.06);padding:12px 18px;border-radius:18px;font-size:16px;display:flex;align-items:center;gap:8px;transition:.3s;}
 .hobby-item:hover{background:rgba(0,255,153,0.2);cursor:pointer;}
 
-/* VERTICAL GRID FOR ACHIEVEMENTS */
-.achievements{margin-top:40px;}
 .achievement-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:20px;}
 .achievement-card{background:rgba(255,255,255,0.05);border-radius:15px;padding:12px;text-align:center;border: 1px solid rgba(255,255,255,0.1);display:flex;flex-direction:column;gap:8px;transition:0.3s;}
 .achievement-card:hover{border-color: #00ff99; transform: translateY(-5px);}
 .achievement-card img{width:100%;height:100px;border-radius:12px;object-fit:cover;}
 .achievement-card .achievement-text{font-size:13px;color:#fff;font-weight:500;line-height:1.4;flex-grow:1;display:flex;align-items:center;justify-content:center;}
 
-.gallery{margin-top:40px;}
 .gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
 .gallery-grid img{width:100%;border-radius:12px;object-fit:cover;cursor:pointer;transition:.3s;aspect-ratio: 1/1;}
 .gallery-grid img:hover{transform:scale(1.05);}
 
 .quote-box{margin-top:40px;padding:20px 15px;border-radius:20px;background:rgba(0,255,153,0.08);color:#00ff99;font-size:16px;font-style:italic;line-height:1.5;}
 
-/* POLL AND POPUP STYLES */
 .poll{margin-top:40px;padding:15px 10px;border-radius:20px;background:rgba(255,255,255,0.05);}
 .poll-title{font-size:18px;color:#00ff99;font-weight:600;margin-bottom:12px;}
 .poll-options{display:flex;justify-content:center;gap:15px;}
@@ -120,12 +120,12 @@ body{min-height:100vh;background:radial-gradient(circle at top,#0f1f1a,#050505 7
 
 @media(min-width: 600px) {
   .container { max-width: 600px; }
-  .grid, .achievement-grid, .life-grid { grid-template-columns: repeat(2, 1fr); }
+  .grid, .achievement-grid, .life-grid, .media-grid { grid-template-columns: repeat(2, 1fr); }
   .gallery-grid { grid-template-columns: repeat(3, 1fr); }
 }
 @media(min-width: 900px) {
   .container { max-width: 900px; }
-  .grid, .achievement-grid, .life-grid { grid-template-columns: repeat(4, 1fr); }
+  .grid, .achievement-grid, .life-grid, .media-grid { grid-template-columns: repeat(4, 1fr); }
   .gallery-grid { grid-template-columns: repeat(4, 1fr); }
 }
 </style>
@@ -158,113 +158,89 @@ body{min-height:100vh;background:radial-gradient(circle at top,#0f1f1a,#050505 7
     <div class="info-box">🕒 ∞</div>
     <div class="info-box">📍 Mymensingh, BD</div>
   </div>
-    <br>
-    <br>
-<h3>My Favourite Songs</h3>
-  <div class="sr-right music">
-    <img loading="lazy" src="https://i.ibb.co.com/ynSBZ6gC/images.jpg">
-    <div class="music-title"><strong>Shape of You</strong><br><small>Ed Sheeran</small></div>
+
+  <!-- SONGS GRID -->
+  <div class="section-title sr-bottom">My Favourite Songs</div>
+  <div class="media-grid">
+    <div class="media-card sr-bottom">
+      <img loading="lazy" src="https://i.ibb.co.com/ynSBZ6gC/images.jpg">
+      <div class="media-info"><strong>Shape of You</strong><small>Ed Sheeran</small></div>
+    </div>
+    <div class="media-card sr-bottom">
+      <img loading="lazy" src="https://i.ibb.co.com/whQ7sVjT/mqdefault.jpg">
+      <div class="media-info"><strong>Smooth Criminal</strong><small>Michael Jackson</small></div>
+    </div>
+    <div class="media-card sr-bottom">
+      <img loading="lazy" src="https://i.ibb.co.com/NgHp5VYC/hq720.jpg">
+      <div class="media-info"><strong>Last Leaves Of Autumn</strong><small>Beth Orton</small></div>
+    </div>
+    <div class="media-card sr-bottom">
+      <img loading="lazy" src="https://i.ibb.co.com/4g73qNp8/images-2.jpg">
+      <div class="media-info"><strong>My Only Friend</strong><small>Eredaze</small></div>
+    </div>
+    <div class="media-card sr-bottom">
+      <img loading="lazy" src="https://i.ibb.co.com/wFm65hc2/Matushka-song.png">
+      <div class="media-info"><strong>Matushka</strong><small>Tatiana Kurtukova</small></div>
+    </div>
   </div>
 
-  <div class="sr-right music">
-    <img loading="lazy" src="https://i.ibb.co.com/whQ7sVjT/mqdefault.jpg">
-    <div class="music-title"><strong>Smooth Criminal</strong><br><small>Michael Jackson</small></div>
+  <!-- MOVIES/ANIME GRID -->
+  <div class="section-title sr-bottom">Favourite Movies & Anime</div>
+  <div class="media-grid">
+    <div class="media-card sr-bottom">
+      <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/en/d/d8/Game_of_Thrones_title_card.jpg?20151008220625">
+      <div class="media-info"><strong>Game Of Thrones</strong><small>Series</small></div>
+    </div>
+    <div class="media-card sr-bottom">
+      <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/en/e/eb/Westworld_%28TV_series%29_title_card.jpg">
+      <div class="media-info"><strong>WestWorld</strong><small>Series</small></div>
+    </div>
+    <div class="media-card sr-bottom">
+      <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/en/thumb/0/05/The_Witcher_Logo.png/500px-The_Witcher_Logo.png">
+      <div class="media-info"><strong>The Witcher</strong><small>Series</small></div>
+    </div>
+    <div class="media-card sr-bottom">
+      <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Stranger_Things_logo.png/500px-Stranger_Things_logo.png">
+      <div class="media-info"><strong>Stranger Things</strong><small>Series</small></div>
+    </div>
+    <div class="media-card sr-bottom">
+      <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/House_of_the_dragon_logo.png/500px-House_of_the_dragon_logo.png">
+      <div class="media-info"><strong>House of The Dragon</strong><small>Series</small></div>
+    </div>
+    <div class="media-card sr-bottom">
+      <img loading="lazy" src="https://static.wikia.nocookie.net/netflix/images/4/44/Dark_S3_Poster_%281%29.jpg/revision/latest?cb=20200620223809">
+      <div class="media-info"><strong>Dark</strong><small>Series</small></div>
+    </div>
+    <div class="media-card sr-bottom">
+      <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/en/5/59/1899NetflixPosterEnglish.jpg">
+      <div class="media-info"><strong>1899</strong><small>Series</small></div>
+    </div>
+    <div class="media-card sr-bottom">
+      <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Logo_Naruto_Shipp%C5%ABden.svg/500px-Logo_Naruto_Shipp%C5%ABden.svg.png">
+      <div class="media-info"><strong>Naruto</strong><small>Anime</small></div>
+    </div>
+    <div class="media-card sr-bottom">
+      <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/en/6/69/Black_Clover%2C_volume_1.jpg">
+      <div class="media-info"><strong>Black Clover</strong><small>Anime</small></div>
+    </div>
+    <div class="media-card sr-bottom">
+      <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/en/3/3f/Bleach_%28manga%29_1.png">
+      <div class="media-info"><strong>Bleach</strong><small>Anime</small></div>
+    </div>
+    <div class="media-card sr-bottom">
+      <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/en/6/6c/Solo_Leveling_Volume_1_Cover.jpg">
+      <div class="media-info"><strong>Solo Leveling</strong><small>Anime</small></div>
+    </div>
+    <div class="media-card sr-bottom">
+      <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/en/6/6f/Death_Note_Vol_1.jpg">
+      <div class="media-info"><strong>Death Note</strong><small>Anime</small></div>
+    </div>
+    <div class="media-card sr-bottom">
+      <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/en/4/46/Jujutsu_kaisen.jpg">
+      <div class="media-info"><strong>Jujutsu Kaisen</strong><small>Anime</small></div>
+    </div>
   </div>
 
-  <div class="sr-right music">
-    <img loading="lazy" src="https://i.ibb.co.com/NgHp5VYC/hq720.jpg">
-    <div class="music-title"><strong>Last Leaves Of Autumn</strong><br><small>Beth Orton</small></div>
-  </div>
-
-  <div class="sr-right music">
-    <img loading="lazy" src="https://i.ibb.co.com/4g73qNp8/images-2.jpg">
-    <div class="music-title"><strong>My Only Friend</strong><br><small>Eredaze</small></div>
-  </div>
-
-  
-<div class="sr-right music">
-    <img loading="lazy" src="https://i.ibb.co.com/wFm65hc2/Matushka-song.png">
-    <div class="music-title"><strong>Matushka</strong><br><small>Tatiana Kurtukova</small></div>
-  </div>
-
-
-
-
-
-<h3>My Favourite Movies/Series/Anime</h3>
-  <div class="sr-right music">
-    <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/en/d/d8/Game_of_Thrones_title_card.jpg?20151008220625">
-    <div class="music-title"><strong>Game Of Thrones</strong><br><small>Series</small></div>
-  </div>
-
-  <div class="sr-right music">
-    <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/en/e/eb/Westworld_%28TV_series%29_title_card.jpg">
-    <div class="music-title"><strong>WestWorld</strong><br><small>Series</small></div>
-  </div>
-
-  <div class="sr-right music">
-    <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/en/thumb/0/05/The_Witcher_Logo.png/500px-The_Witcher_Logo.png">
-    <div class="music-title"><strong>The Witcher</strong><br><small>Series</small></div>
-  </div>
-
-  <div class="sr-right music">
-    <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Stranger_Things_logo.png/500px-Stranger_Things_logo.png">
-    <div class="music-title"><strong>Stranger Things</strong><br><small>Series</small></div>
-  </div>
-
-  
-<div class="sr-right music">
-    <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/House_of_the_dragon_logo.png/500px-House_of_the_dragon_logo.png">
-    <div class="music-title"><strong>House of The Dragon</strong><br><small>series</small></div>
-  </div>
-
-    <div class="sr-right music">
-    <img loading="lazy" src="https://static.wikia.nocookie.net/netflix/images/4/44/Dark_S3_Poster_%281%29.jpg/revision/latest?cb=20200620223809">
-    <div class="music-title"><strong>Dark</strong><br><small>series</small></div>
-  </div>
-
-    <div class="sr-right music">
-    <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/en/5/59/1899NetflixPosterEnglish.jpg">
-    <div class="music-title"><strong>1899</strong><br><small>series</small></div>
-  </div>
-
-    
-<div class="sr-right music">
-    <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Logo_Naruto_Shipp%C5%ABden.svg/500px-Logo_Naruto_Shipp%C5%ABden.svg.png">
-    <div class="music-title"><strong>Naruto</strong><br><small>Anime</small></div>
-  </div>
-
-    <div class="sr-right music">
-    <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/en/6/69/Black_Clover%2C_volume_1.jpg">
-    <div class="music-title"><strong>Black Clover</strong><br><small>Anime</small></div>
-  </div>
-
-    <div class="sr-right music">
-    <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/en/3/3f/Bleach_%28manga%29_1.png">
-    <div class="music-title"><strong>Bleach</strong><br><small>Anime</small></div>
-  </div>
-
-    <div class="sr-right music">
-    <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/en/6/6c/Solo_Leveling_Volume_1_Cover.jpg">
-    <div class="music-title"><strong>Solo Leveling</strong><br><small>Anime</small></div>
-  </div>
-
-    <div class="sr-right music">
-    <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/en/6/6f/Death_Note_Vol_1.jpg">
-    <div class="music-title"><strong>Death Note</strong><br><small>Anime</small></div>
-  </div>
-
-    <div class="sr-right music">
-    <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/en/4/46/Jujutsu_kaisen.jpg">
-    <div class="music-title"><strong>Jujutsu Kaisen</strong><br><small>Anime</small></div>
-  </div>
-
-
-
-
-    
-
-  
   <div class="sr-bottom bio">Maksudul Munna, a soul that wanders,
 Finding beauty in quiet moments and gentle wonders.
 Curious heart, a mind that dreams,
@@ -292,6 +268,7 @@ Dancing through life on soft, unseen streams.</div>
     <button class="fact-btn" onclick="nextFact()">Another Fact</button>
   </div>
 
+  <!-- LIFE SEGMENT -->
   <div class="sr-bottom life-section">
     <div class="section-title">My Life</div>
     <div class="life-grid">
@@ -305,12 +282,13 @@ Dancing through life on soft, unseen streams.</div>
       </div>
       <div class="life-event">
         <img loading="lazy" src="https://i.ibb.co.com/tMK5m1y8/retouch-2025083016274126.jpg" alt="HSC">
-        <div class="event-text">Passed HSC Exam (GPA-5) with Full Free Scholarship (2025)</div>
+        <div class="event-text">Passed HSC Exam (GPA-5) (2025)</div>
       </div>
       <div class="life-event">
         <img loading="lazy" src="https://i.ibb.co.com/rKLMty2z/QVZlb-HJJa-Eo1-REJ3c-HVFYQ.jpg" alt="Certificate">
-        <div class="event-text">Got Perfect Grade certificate (From College)</div>
+        <div class="event-text">Got Perfect Grade certificate</div>
       </div>
+      <!-- RESTORED COMING SOON -->
       <div class="life-event">
         <img loading="lazy" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=400" alt="Future">
         <div class="event-text">Coming Soon: University Adventures</div>
@@ -328,6 +306,7 @@ Dancing through life on soft, unseen streams.</div>
     </div>
   </div>
 
+  <!-- ACHIEVEMENTS SEGMENT -->
   <div class="sr-bottom achievements">
     <div class="section-title">Achievements</div>
     <div class="achievement-grid">
@@ -354,6 +333,7 @@ Dancing through life on soft, unseen streams.</div>
     </div>
   </div>
 
+  <!-- GALLERY SEGMENT -->
   <div class="sr-bottom gallery">
     <div class="section-title">Gallery</div>
     <div class="gallery-grid">
@@ -401,7 +381,6 @@ Dancing through life on soft, unseen streams.</div>
       <div class="overview-item"><strong>Jagannath University:</strong> 6798th</div>
       <div class="overview-item"><strong>Jahangirnagar University:</strong> 1589th</div>
       <div class="overview-item"><strong>Chittagong University:</strong> 5886th</div>
-      <div class="overview-item"><strong>Comilla University:</strong> Pending</div>
     </div>
   </div>
 
@@ -458,6 +437,7 @@ sr.reveal('.sr-card', { interval: 100, origin: 'bottom', distance: '40px' });
 sr.reveal('.sr-social', { interval: 150, origin: 'left', distance: '50px' });
 sr.reveal('.life-event', { interval: 150, origin: 'bottom', distance: '30px' });
 sr.reveal('.achievement-card', { interval: 150, origin: 'bottom', distance: '30px' });
+sr.reveal('.media-card', { interval: 100, origin: 'bottom', distance: '30px' });
 sr.reveal('.gallery-grid img', { interval: 50, scale: 0.85 });
 sr.reveal('.hobby-item', { interval: 100, scale: 0.9, origin: 'bottom' });
 </script>

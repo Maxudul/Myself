@@ -1,478 +1,460 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Maksudul Munna | Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maksudul Munna | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #050507;
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-bg: rgba(20, 20, 25, 0.4);
+            --glow-primary: #00ff99;
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            margin: 0;
+        }
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{min-height:100vh;background:radial-gradient(circle at top,#0f1f1a,#050505 70%);color:#fff;display:flex;justify-content:center;padding:30px 15px;overflow-x: hidden;}
-.container{width:100%;max-width:420px;text-align:center;}
-.avatar{width:110px;height:110px;margin:0 auto 15px;border-radius:25px;overflow:hidden;box-shadow:0 0 20px rgba(0,255,170,.4);}
-.avatar img{width:100%;height:100%;object-fit:cover;}
-.name{font-size:30px;font-weight:700;}
-.tagline{color:#00ff99;letter-spacing:3px;font-size:13px;margin-top:5px;}
-.vibe{margin:18px auto;padding:15px 18px;display:flex;flex-direction:column;gap:5px;align-items:center;border-radius:25px;background:rgba(255,255,255,0.08);line-height:1.4;}
-.philosophy{font-size: 12px; color: #00ff99; font-style: italic; margin-top: 5px; opacity: 0.9;}
-.info-row{margin-top:15px;display:flex;justify-content:center;gap:12px;}
-.info-box{padding:8px 14px;border-radius:20px;background:rgba(255,255,255,0.07);font-size:13px;}
+        h1, h2, h3, .heading-font { font-family: 'Space Grotesk', sans-serif; }
 
-.bio{margin:25px 10px;font-size:14px;opacity:.85;line-height:1.6;}
+        #canvas-container {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100vh;
+            z-index: -1;
+            background: radial-gradient(circle at 50% 50%, #0a0a0f 0%, #050507 100%);
+        }
 
-/* Main Grid Layouts */
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:20px;}
-.card{padding:25px 15px;border-radius:20px;background:rgba(255,255,255,0.06);letter-spacing:1px;font-size:15px;display:flex;align-items:center;justify-content:center;gap:8px;}
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+        }
+        
+        .glass-panel:hover { border-color: rgba(0, 255, 153, 0.4); }
 
-/* UPDATED MEDIA GRID */
-.section-title{color:#fff;font-size:24px;font-weight:700;margin:40px 0 20px;}
-.media-grid {display:grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 30px;}
-.media-card {background: rgba(255,255,255,0.05); border-radius: 18px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); transition: 0.3s;}
-.media-card:hover {border-color: #00ff99; transform: translateY(-5px);}
-.media-card img {width: 100%; height: 120px; object-fit: cover;}
-.media-info {padding: 10px; text-align: left;}
-.media-info strong {display: block; font-size: 13px; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
-.media-info small {font-size: 11px; color: #00ff99; opacity: 0.8;}
+        .text-gradient-accent {
+            background: linear-gradient(135deg, #00ff99 0%, #0ea5e9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-.social-list{margin-top:30px;display:flex;flex-direction:column;gap:14px;}
-.social-item{display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:18px;background:rgba(255,255,255,0.06);color:#00ff99;text-decoration:none;font-size:15px;transition:.3s;}
-.social-item i{font-size:20px;width:26px;text-align:center;}
-.social-item:hover{transform:translateY(-3px);box-shadow:0 0 25px rgba(0,255,153,.35);}
+        .reveal-element { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
+        .reveal-element.in-view { opacity: 1; transform: translateY(0); }
 
-.fact-box{margin-top:30px;padding:20px 15px;border-radius:20px;background:rgba(255,255,255,0.06);font-size:15px;letter-spacing:1px;color:#fff;line-height:1.5;text-align:center;}
-.fact-title{color:#00ff99;font-weight:600;margin-bottom:10px;font-size:16px;}
-.fact-text{margin-bottom:15px;font-style:italic;min-height:45px; transition: 0.3s ease;}
-.fact-btn{background:#00ff99;color:#000;border:none;border-radius:12px;padding:8px 16px;cursor:pointer;font-weight:600;transition:.3s;}
-.fact-btn:hover{background:#00cc7a;}
+        .media-card img { transition: transform 0.5s ease; width: 100%; height: 140px; object-fit: cover; }
+        .media-card:hover img { transform: scale(1.1); }
 
-.life-grid {display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:20px;}
-.life-event {background:rgba(255,255,255,0.05);border-radius:15px;padding:12px;text-align:center;border: 1px solid rgba(255,255,255,0.1);display:flex;flex-direction:column;gap:8px;transition:0.3s;}
-.life-event:hover {border-color: #00ff99; transform: translateY(-5px);}
-.life-event img{width:100%; height:110px; border-radius:12px; object-fit:cover;}
-.life-event .event-text{color:#fff;font-size:13px;font-weight:500;line-height:1.4;flex-grow:1;display:flex;align-items:center;justify-content:center;}
+        .modal-overlay {
+            position: fixed; inset: 0; background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px); display: none; justify-content: center;
+            align-items: center; z-index: 1000;
+        }
+        .modal-overlay.active { display: flex; }
 
-.hobby-list{display:flex;justify-content:center;flex-wrap:wrap;gap:15px;}
-.hobby-item{background:rgba(255,255,255,0.06);padding:12px 18px;border-radius:18px;font-size:16px;display:flex;align-items:center;gap:8px;transition:.3s;}
-.hobby-item:hover{background:rgba(0,255,153,0.2);cursor:pointer;}
-
-.achievement-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:20px;}
-.achievement-card{background:rgba(255,255,255,0.05);border-radius:15px;padding:12px;text-align:center;border: 1px solid rgba(255,255,255,0.1);display:flex;flex-direction:column;gap:8px;transition:0.3s;}
-.achievement-card:hover{border-color: #00ff99; transform: translateY(-5px);}
-.achievement-card img{width:100%;height:100px;border-radius:12px;object-fit:cover;}
-.achievement-card .achievement-text{font-size:13px;color:#fff;font-weight:500;line-height:1.4;flex-grow:1;display:flex;align-items:center;justify-content:center;}
-
-.gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
-.gallery-grid img{width:100%;border-radius:12px;object-fit:cover;cursor:pointer;transition:.3s;aspect-ratio: 1/1;}
-.gallery-grid img:hover{transform:scale(1.05);}
-
-.quote-box{margin-top:40px;padding:20px 15px;border-radius:20px;background:rgba(0,255,153,0.08);color:#00ff99;font-size:16px;font-style:italic;line-height:1.5;}
-
-.poll{margin-top:40px;padding:15px 10px;border-radius:20px;background:rgba(255,255,255,0.05);}
-.poll-title{font-size:18px;color:#00ff99;font-weight:600;margin-bottom:12px;}
-.poll-options{display:flex;justify-content:center;gap:15px;}
-.poll-btn{padding:10px 18px;border:none;border-radius:12px;background:rgba(0,255,153,0.2);color:#fff;cursor:pointer;font-weight:600;transition:.3s;}
-.poll-btn:hover{background:#00ff99;color:#000;}
-
-.popup-overlay {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(8px);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-.popup-content {
-    background: #0f1f1a;
-    border: 2px solid #00ff99;
-    border-radius: 20px;
-    padding: 30px 20px;
-    width: 85%;
-    max-width: 350px;
-    text-align: center;
-    box-shadow: 0 0 30px rgba(0, 255, 153, 0.3);
-    position: relative;
-    transform: scale(0.8);
-    transition: 0.3s;
-}
-.popup-overlay.active { display: flex; }
-.popup-overlay.active .popup-content { transform: scale(1); }
-.popup-text { font-size: 16px; color: #fff; font-weight: 500; margin-bottom: 20px; line-height: 1.5; }
-.popup-close {
-    background: #00ff99;
-    color: #000;
-    border: none;
-    padding: 8px 20px;
-    border-radius: 10px;
-    font-weight: 700;
-    cursor: pointer;
-}
-
-.academics{margin-top:50px;text-align:center;}
-.academics-btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;margin:10px 0;border-radius:25px;background:transparent;border:2px solid #00ff99;color:#00ff99;font-weight:600;font-size:16px;text-decoration:none;transition:.3s;box-shadow:0 0 10px rgba(0,255,153,0.5);cursor:pointer;}
-.academics-btn:hover{background:#00ff99;color:#000;box-shadow:0 0 20px rgba(0,255,153,0.8);transform:translateY(-3px);}
-.academics-overview{margin-top:15px;padding:12px 15px;border-radius:12px;background:rgba(255,255,255,0.05);text-align:left;font-size:14px;color:#fff;}
-.academics-overview .overview-item{margin-bottom:6px;display:flex;justify-content:space-between;}
-
-@media(min-width: 600px) {
-  .container { max-width: 600px; }
-  .grid, .achievement-grid, .life-grid, .media-grid { grid-template-columns: repeat(2, 1fr); }
-  .gallery-grid { grid-template-columns: repeat(3, 1fr); }
-}
-@media(min-width: 900px) {
-  .container { max-width: 900px; }
-  .grid, .achievement-grid, .life-grid, .media-grid { grid-template-columns: repeat(4, 1fr); }
-  .gallery-grid { grid-template-columns: repeat(4, 1fr); }
-}
-</style>
+        #loader {
+            position: fixed; inset: 0; background: #050507; z-index: 100;
+            display: flex; justify-content: center; align-items: center;
+        }
+    </style>
 </head>
 <body>
 
-<div class="popup-overlay" id="pollPopup">
-    <div class="popup-content">
-        <div class="popup-text" id="popupText"></div>
-        <button class="popup-close" onclick="closePopup()">Got it!</button>
-    </div>
-</div>
-
-<div class="container">
-
-  <div class="sr-top">
-    <div class="avatar">
-      <img loading="lazy" src="https://i.ibb.co.com/2Y8wV9SS/IMG-20251230-015205-005.webp">
-    </div>
-    <div class="name">Maksudul Munna</div>
-    <div class="tagline">ARTIST • VISIONARY • REBEL</div>
-    <div class="vibe">
-        <span>🩸(O+) • Maksudul Munna</span>
-        <span>📅 6 December, 2005 • 🏫 Ex Damian</span>
-        <div class="philosophy">"Keep your friends rich and your enemies rich, and wait to find out which is which!"</div>
-    </div>
-  </div>
-
-  <div class="sr-left info-row">
-    <div class="info-box">🕒 ∞</div>
-    <div class="info-box">📍 Mymensingh, BD</div>
-  </div>
-
-  <!-- SONGS GRID -->
-  <div class="section-title sr-bottom">My Favourite Songs</div>
-  <div class="media-grid">
-    <div class="media-card sr-bottom">
-      <img loading="lazy" src="https://i.ibb.co.com/ynSBZ6gC/images.jpg">
-      <div class="media-info"><strong>Shape of You</strong><small>Ed Sheeran</small></div>
-    </div>
-    <div class="media-card sr-bottom">
-      <img loading="lazy" src="https://i.ibb.co.com/whQ7sVjT/mqdefault.jpg">
-      <div class="media-info"><strong>Smooth Criminal</strong><small>Michael Jackson</small></div>
-    </div>
-    <div class="media-card sr-bottom">
-      <img loading="lazy" src="https://i.ibb.co.com/NgHp5VYC/hq720.jpg">
-      <div class="media-info"><strong>Last Leaves Of Autumn</strong><small>Beth Orton</small></div>
+    <div id="loader">
+        <div class="flex flex-col items-center">
+            <div class="w-12 h-12 border-4 border-[#00ff99] border-t-transparent rounded-full animate-spin"></div>
+        </div>
     </div>
 
-
-<div class="media-card sr-bottom">
-  <img loading="lazy"
-       src="https://upload.wikimedia.org/wikipedia/en/d/d6/Lose_Yourself.jpg"
-       alt="Lose Yourself">
-  <div class="media-info">
-    <strong>Lose Yourself</strong>
-    <small>Eminem</small>
-  </div>
-</div>
-
-<div class="media-card sr-bottom">
-  <img loading="lazy"
-       src="https://upload.wikimedia.org/wikipedia/en/7/73/Venom_%28Eminem_song%29_single_cover.jpg"
-       alt="Venom">
-  <div class="media-info">
-    <strong>Venom</strong>
-    <small>Eminem</small>
-  </div>
-</div>
-
-<div class="media-card sr-bottom">
-  <img loading="lazy"
-       src="https://upload.wikimedia.org/wikipedia/en/3/34/Waqt_1965_film_poster.JPG"
-       alt="Meri Zohra Jabeen">
-  <div class="media-info">
-    <strong>Meri Zohra Jabeen</strong>
-    <small>Waqt (1965)</small>
-  </div>
-</div>
-      
-    <div class="media-card sr-bottom">
-      <img loading="lazy" src="https://i.ibb.co.com/4g73qNp8/images-2.jpg">
-      <div class="media-info"><strong>My Only Friend</strong><small>Eredaze</small></div>
+    <div class="modal-overlay" id="pollPopup">
+        <div class="glass-panel p-8 rounded-2xl max-w-sm w-full text-center border-[#00ff99]">
+            <div id="popupText" class="text-white mb-6"></div>
+            <button onclick="closePopup()" class="px-6 py-2 bg-[#00ff99] text-black font-bold rounded-lg hover:opacity-80">Got it!</button>
+        </div>
     </div>
-    <div class="media-card sr-bottom">
-      <img loading="lazy" src="https://i.ibb.co.com/wFm65hc2/Matushka-song.png">
-      <div class="media-info"><strong>Matushka</strong><small>Tatiana Kurtukova</small></div>
-    </div>
-  </div>
 
-  <!-- MOVIES/ANIME GRID -->
-  <div class="section-title sr-bottom">Favourite Movies & Anime</div>
-  <div class="media-grid">
-    <div class="media-card sr-bottom">
-      <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/en/d/d8/Game_of_Thrones_title_card.jpg?20151008220625">
-      <div class="media-info"><strong>Game Of Thrones</strong><small>Series</small></div>
-    </div>
-    <div class="media-card sr-bottom">
-      <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/en/e/eb/Westworld_%28TV_series%29_title_card.jpg">
-      <div class="media-info"><strong>WestWorld</strong><small>Series</small></div>
-    </div>
-    <div class="media-card sr-bottom">
-      <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/en/thumb/0/05/The_Witcher_Logo.png/500px-The_Witcher_Logo.png">
-      <div class="media-info"><strong>The Witcher</strong><small>Series</small></div>
-    </div>
-    <div class="media-card sr-bottom">
-      <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Stranger_Things_logo.png/500px-Stranger_Things_logo.png">
-      <div class="media-info"><strong>Stranger Things</strong><small>Series</small></div>
-    </div>
-    <div class="media-card sr-bottom">
-      <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/House_of_the_dragon_logo.png/500px-House_of_the_dragon_logo.png">
-      <div class="media-info"><strong>House of The Dragon</strong><small>Series</small></div>
-    </div>
-    <div class="media-card sr-bottom">
-      <img loading="lazy" src="https://static.wikia.nocookie.net/netflix/images/4/44/Dark_S3_Poster_%281%29.jpg/revision/latest?cb=20200620223809">
-      <div class="media-info"><strong>Dark</strong><small>Series</small></div>
-    </div>
-    <div class="media-card sr-bottom">
-      <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/en/5/59/1899NetflixPosterEnglish.jpg">
-      <div class="media-info"><strong>1899</strong><small>Series</small></div>
-    </div>
-    <div class="media-card sr-bottom">
-      <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Logo_Naruto_Shipp%C5%ABden.svg/500px-Logo_Naruto_Shipp%C5%ABden.svg.png">
-      <div class="media-info"><strong>Naruto</strong><small>Anime</small></div>
-    </div>
-    <div class="media-card sr-bottom">
-      <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/en/6/69/Black_Clover%2C_volume_1.jpg">
-      <div class="media-info"><strong>Black Clover</strong><small>Anime</small></div>
-    </div>
-    <div class="media-card sr-bottom">
-      <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/en/3/3f/Bleach_%28manga%29_1.png">
-      <div class="media-info"><strong>Bleach</strong><small>Anime</small></div>
-    </div>
-    <div class="media-card sr-bottom">
-      <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/en/6/6c/Solo_Leveling_Volume_1_Cover.jpg">
-      <div class="media-info"><strong>Solo Leveling</strong><small>Anime</small></div>
-    </div>
-    <div class="media-card sr-bottom">
-      <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/en/6/6f/Death_Note_Vol_1.jpg">
-      <div class="media-info"><strong>Death Note</strong><small>Anime</small></div>
-    </div>
-    <div class="media-card sr-bottom">
-      <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/en/4/46/Jujutsu_kaisen.jpg">
-      <div class="media-info"><strong>Jujutsu Kaisen</strong><small>Anime</small></div>
-    </div>
-  </div>
+    <div id="canvas-container"></div>
 
-  <div class="sr-bottom bio">Maksudul Munna, a soul that wanders,
-Finding beauty in quiet moments and gentle wonders.
-Curious heart, a mind that dreams,
-Dancing through life on soft, unseen streams.</div>
+    <main class="relative z-10">
+        <!-- Hero Section -->
+        <section class="min-h-screen flex flex-col items-center justify-center px-6 text-center">
+            <div class="reveal-element">
+                <div class="w-32 h-32 mx-auto mb-6 rounded-3xl overflow-hidden border-2 border-[#00ff99] shadow-[0_0_20px_rgba(0,255,153,0.3)]">
+                    <img src="https://i.ibb.co.com/2Y8wV9SS/IMG-20251230-015205-005.webp" class="w-full h-full object-cover">
+                </div>
+                <h1 class="text-5xl md:text-7xl font-bold heading-font mb-2">Maksudul <span class="text-gradient-accent">Munna</span></h1>
+                <p class="text-[#00ff99] tracking-[0.3em] text-xs font-bold mb-8 uppercase">Artist • Visionary • Rebel</p>
+                
+                <div class="glass-panel p-6 rounded-2xl max-w-lg mx-auto mb-8">
+                    <div class="flex flex-wrap justify-center gap-4 text-xs mb-4">
+                        <span class="bg-white/5 px-3 py-1 rounded-full border border-white/10">🩸 O+</span>
+                        <span class="bg-white/5 px-3 py-1 rounded-full border border-white/10">📅 6 Dec, 2005</span>
+                        <span class="bg-white/5 px-3 py-1 rounded-full border border-white/10">📍 Mymensingh</span>
+                    </div>
+                    <p class="italic text-gray-300 text-sm">"Keep your friends rich and your enemies rich, and wait to find out which is which!"</p>
+                </div>
 
-  <div class="grid">
-    <div class="sr-card card"><i class="fas fa-user"></i> Egocentric</div>
-    <div class="sr-card card"><i class="fas fa-user-secret"></i> Introvert</div>
-    <div class="sr-card card"><i class="fas fa-money-bill-wave"></i> Selfish</div>
-    <div class="sr-card card"><i class="fas fa-star"></i> Self-absorbed</div>
-  </div>
+                <div class="flex justify-center gap-4 mb-12">
+                    <div class="glass-panel px-4 py-2 rounded-xl text-xs flex items-center gap-2"><i class="fas fa-infinity text-[#00ff99]"></i> Time is ∞</div>
+                    <div class="glass-panel px-4 py-2 rounded-xl text-xs flex items-center gap-2"><i class="fas fa-university text-[#00ff99]"></i> Ex Damian</div>
+                </div>
+            </div>
+        </section>
 
-  <div class="social-list">
-    <a class="social-item sr-social" href="https://www.facebook.com/share/1Ey2xqhkdD/"><i class="fab fa-facebook-f"></i><span>Facebook</span></a>
-    <a class="social-item sr-social" href="https://www.instagram.com/maxudul_munna?igsh=bGsyc2xodHJvZGlo"><i class="fab fa-instagram"></i><span>Instagram</span></a>
-    <a class="social-item sr-social" href="https://wa.me/8801687640259"><i class="fab fa-whatsapp"></i><span>WhatsApp</span></a>
-    <a class="social-item sr-social" href="https://pin.it/NxhZUtMBZ"><i class="fab fa-pinterest-p"></i><span>Pinterest</span></a>
-    <a class="social-item sr-social" href="https://youtube.com/@midnightwhisperyt?si=G7m7RkaMBlzt03Zt"><i class="fab fa-youtube"></i><span>YouTube</span></a>
-    <a class="social-item sr-social" href="https://www.snapchat.com/add/maxudul_munna?share_id=7tr0SxUycfI&locale=en-GB"><i class="fab fa-snapchat-ghost"></i><span>Snapchat</span></a>
-  </div>
+        <!-- Songs Section -->
+        <section id="media" class="py-20 px-6 max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold heading-font mb-10 border-l-4 border-[#00ff99] pl-4">Favourite Songs</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                <!-- Song cards -->
+                <div class="glass-panel p-3 rounded-xl reveal-element media-card">
+                    <div class="rounded-lg overflow-hidden mb-3"><img src="https://i.ibb.co.com/ynSBZ6gC/images.jpg"></div>
+                    <div class="text-sm font-bold truncate">Shape of You</div>
+                    <div class="text-[10px] text-[#00ff99]">Ed Sheeran</div>
+                </div>
+                <div class="glass-panel p-3 rounded-xl reveal-element media-card">
+                    <div class="rounded-lg overflow-hidden mb-3"><img src="https://i.ibb.co.com/whQ7sVjT/mqdefault.jpg"></div>
+                    <div class="text-sm font-bold truncate">Smooth Criminal</div>
+                    <div class="text-[10px] text-[#00ff99]">Michael Jackson</div>
+                </div>
+                <div class="glass-panel p-3 rounded-xl reveal-element media-card">
+                    <div class="rounded-lg overflow-hidden mb-3"><img src="https://i.ibb.co.com/NgHp5VYC/hq720.jpg"></div>
+                    <div class="text-sm font-bold truncate">Last Leaves Of Autumn</div>
+                    <div class="text-[10px] text-[#00ff99]">Beth Orton</div>
+                </div>
+                <div class="glass-panel p-3 rounded-xl reveal-element media-card">
+                    <div class="rounded-lg overflow-hidden mb-3"><img src="https://upload.wikimedia.org/wikipedia/en/d/d6/Lose_Yourself.jpg"></div>
+                    <div class="text-sm font-bold truncate">Lose Yourself</div>
+                    <div class="text-[10px] text-[#00ff99]">Eminem</div>
+                </div>
+                <div class="glass-panel p-3 rounded-xl reveal-element media-card">
+                    <div class="rounded-lg overflow-hidden mb-3"><img src="https://upload.wikimedia.org/wikipedia/en/7/73/Venom_%28Eminem_song%29_single_cover.jpg"></div>
+                    <div class="text-sm font-bold truncate">Venom</div>
+                    <div class="text-[10px] text-[#00ff99]">Eminem</div>
+                </div>
+                <div class="glass-panel p-3 rounded-xl reveal-element media-card">
+                    <div class="rounded-lg overflow-hidden mb-3"><img src="https://upload.wikimedia.org/wikipedia/en/3/34/Waqt_1965_film_poster.JPG"></div>
+                    <div class="text-sm font-bold truncate">Meri Zohra Jabeen</div>
+                    <div class="text-[10px] text-[#00ff99]">Waqt (1965)</div>
+                </div>
+                <div class="glass-panel p-3 rounded-xl reveal-element media-card">
+                    <div class="rounded-lg overflow-hidden mb-3"><img src="https://i.ibb.co.com/4g73qNp8/images-2.jpg"></div>
+                    <div class="text-sm font-bold truncate">My Only Friend</div>
+                    <div class="text-[10px] text-[#00ff99]">Eredaze</div>
+                </div>
+                <div class="glass-panel p-3 rounded-xl reveal-element media-card">
+                    <div class="rounded-lg overflow-hidden mb-3"><img src="https://i.ibb.co.com/wFm65hc2/Matushka-song.png"></div>
+                    <div class="text-sm font-bold truncate">Matushka</div>
+                    <div class="text-[10px] text-[#00ff99]">Tatiana Kurtukova</div>
+                </div>
+            </div>
+        </section>
 
-  <div class="sr-bottom fact-box">
-    <div class="fact-title">• Did You Know?</div>
-    <div class="fact-text" id="fact-text">I'm in love with a Devil! 😈</div>
-    <button class="fact-btn" onclick="nextFact()">Another Fact</button>
-  </div>
+        <!-- Movies Section -->
+        <section class="py-20 px-6 max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold heading-font mb-10 border-l-4 border-blue-500 pl-4">Movies & Anime</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                <div class="glass-panel p-2 rounded-xl reveal-element media-card">
+                    <div class="rounded-lg overflow-hidden mb-2 h-40"><img src="https://upload.wikimedia.org/wikipedia/en/d/d8/Game_of_Thrones_title_card.jpg?20151008220625" class="h-full"></div>
+                    <div class="text-xs font-bold truncate">Game Of Thrones</div>
+                </div>
+                <div class="glass-panel p-2 rounded-xl reveal-element media-card">
+                    <div class="rounded-lg overflow-hidden mb-2 h-40"><img src="https://upload.wikimedia.org/wikipedia/en/e/eb/Westworld_%28TV_series%29_title_card.jpg" class="h-full"></div>
+                    <div class="text-xs font-bold truncate">WestWorld</div>
+                </div>
+                <div class="glass-panel p-2 rounded-xl reveal-element media-card">
+                    <div class="rounded-lg overflow-hidden mb-2 h-40"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/05/The_Witcher_Logo.png/500px-The_Witcher_Logo.png" class="h-full"></div>
+                    <div class="text-xs font-bold truncate">The Witcher</div>
+                </div>
+                <div class="glass-panel p-2 rounded-xl reveal-element media-card">
+                    <div class="rounded-lg overflow-hidden mb-2 h-40"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Stranger_Things_logo.png/500px-Stranger_Things_logo.png" class="h-full"></div>
+                    <div class="text-xs font-bold truncate">Stranger Things</div>
+                </div>
+                <div class="glass-panel p-2 rounded-xl reveal-element media-card">
+                    <div class="rounded-lg overflow-hidden mb-2 h-40"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/House_of_the_dragon_logo.png/500px-House_of_the_dragon_logo.png" class="h-full"></div>
+                    <div class="text-xs font-bold truncate">House of Dragon</div>
+                </div>
+                <div class="glass-panel p-2 rounded-xl reveal-element media-card">
+                    <div class="rounded-lg overflow-hidden mb-2 h-40"><img src="https://static.wikia.nocookie.net/netflix/images/4/44/Dark_S3_Poster_%281%29.jpg/revision/latest?cb=20200620223809" class="h-full"></div>
+                    <div class="text-xs font-bold truncate">Dark</div>
+                </div>
+                <div class="glass-panel p-2 rounded-xl reveal-element media-card">
+                    <div class="rounded-lg overflow-hidden mb-2 h-40"><img src="https://upload.wikimedia.org/wikipedia/en/5/59/1899NetflixPosterEnglish.jpg" class="h-full"></div>
+                    <div class="text-xs font-bold truncate">1899</div>
+                </div>
+                <div class="glass-panel p-2 rounded-xl reveal-element media-card">
+                    <div class="rounded-lg overflow-hidden mb-2 h-40"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Logo_Naruto_Shipp%C5%ABden.svg/500px-Logo_Naruto_Shipp%C5%ABden.svg.png" class="h-full"></div>
+                    <div class="text-xs font-bold truncate">Naruto</div>
+                </div>
+                <div class="glass-panel p-2 rounded-xl reveal-element media-card">
+                    <div class="rounded-lg overflow-hidden mb-2 h-40"><img src="https://upload.wikimedia.org/wikipedia/en/6/69/Black_Clover%2C_volume_1.jpg" class="h-full"></div>
+                    <div class="text-xs font-bold truncate">Black Clover</div>
+                </div>
+                <div class="glass-panel p-2 rounded-xl reveal-element media-card">
+                    <div class="rounded-lg overflow-hidden mb-2 h-40"><img src="https://upload.wikimedia.org/wikipedia/en/3/3f/Bleach_%28manga%29_1.png" class="h-full"></div>
+                    <div class="text-xs font-bold truncate">Bleach</div>
+                </div>
+                <div class="glass-panel p-2 rounded-xl reveal-element media-card">
+                    <div class="rounded-lg overflow-hidden mb-2 h-40"><img src="https://upload.wikimedia.org/wikipedia/en/6/6c/Solo_Leveling_Volume_1_Cover.jpg" class="h-full"></div>
+                    <div class="text-xs font-bold truncate">Solo Leveling</div>
+                </div>
+                <div class="glass-panel p-2 rounded-xl reveal-element media-card">
+                    <div class="rounded-lg overflow-hidden mb-2 h-40"><img src="https://upload.wikimedia.org/wikipedia/en/6/6f/Death_Note_Vol_1.jpg" class="h-full"></div>
+                    <div class="text-xs font-bold truncate">Death Note</div>
+                </div>
+            </div>
+        </section>
 
-  <!-- LIFE SEGMENT -->
-  <div class="sr-bottom life-section">
-    <div class="section-title">My Life</div>
-    <div class="life-grid">
-      <div class="life-event">
-        <img loading="lazy" src="https://i.ibb.co.com/RkNHdS1Z/QVZkd-EJf-U3-Qt-NGJm-MGkt-Rg.jpg" alt="Birth">
-        <div class="event-text">Born in Mymensingh, Bangladesh (2007)</div>
-      </div>
-      <div class="life-event">
-        <img loading="lazy" src="https://i.ibb.co.com/4R64MhTW/QVZl-Um-I2b-Uh-PUUdtd19ue-A.jpg" alt="College">
-        <div class="event-text">Started My College Life (2024)</div>
-      </div>
-      <div class="life-event">
-        <img loading="lazy" src="https://i.ibb.co.com/tMK5m1y8/retouch-2025083016274126.jpg" alt="HSC">
-        <div class="event-text">Passed HSC Exam (GPA-5) (2025)</div>
-      </div>
-      <div class="life-event">
-        <img loading="lazy" src="https://i.ibb.co.com/rKLMty2z/QVZlb-HJJa-Eo1-REJ3c-HVFYQ.jpg" alt="Certificate">
-        <div class="event-text">Got Perfect Grade certificate</div>
-      </div>
-      <!-- RESTORED COMING SOON -->
-      <div class="life-event">
-        <img loading="lazy" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=400" alt="Future">
-        <div class="event-text">Coming Soon: University Adventures</div>
-      </div>
-    </div>
-  </div>
+        <!-- Profile Detail Section -->
+        <section class="py-20 px-6 max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="reveal-element">
+                    <h3 class="text-2xl font-bold heading-font mb-6">Persona</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="glass-panel p-4 rounded-xl flex items-center gap-3"><i class="fas fa-user text-[#00ff99]"></i> Egocentric</div>
+                        <div class="glass-panel p-4 rounded-xl flex items-center gap-3"><i class="fas fa-user-secret text-[#00ff99]"></i> Introvert</div>
+                        <div class="glass-panel p-4 rounded-xl flex items-center gap-3"><i class="fas fa-money-bill-wave text-[#00ff99]"></i> Selfish</div>
+                        <div class="glass-panel p-4 rounded-xl flex items-center gap-3"><i class="fas fa-star text-[#00ff99]"></i> Self-absorbed</div>
+                    </div>
+                </div>
+                <div class="reveal-element">
+                    <h3 class="text-2xl font-bold heading-font mb-6">Hobbies</h3>
+                    <div class="flex flex-wrap gap-4">
+                        <span class="glass-panel px-6 py-2 rounded-full">🎮 Gaming</span>
+                        <span class="glass-panel px-6 py-2 rounded-full">📸 Photography</span>
+                        <span class="glass-panel px-6 py-2 rounded-full">🎵 Music</span>
+                        <span class="glass-panel px-6 py-2 rounded-full">✈️ Travel</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <div class="sr-bottom hobbies">
-    <div class="section-title">Hobbies & Interests</div>
-    <div class="hobby-list">
-      <div class="hobby-item">🎮 Gaming</div>
-      <div class="hobby-item">📸 Photography</div>
-      <div class="hobby-item">🎵 Music</div>
-      <div class="hobby-item">✈️ Travel</div>
-    </div>
-  </div>
+        <!-- Life Timeline -->
+        <section class="py-20 px-6 max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold heading-font mb-10 text-center">My Life Journey</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="glass-panel p-4 rounded-2xl reveal-element">
+                    <img src="https://i.ibb.co.com/RkNHdS1Z/QVZkd-EJf-U3-Qt-NGJm-MGkt-Rg.jpg" class="w-full h-48 object-cover rounded-xl mb-4">
+                    <p class="text-sm font-medium">Born in Mymensingh, Bangladesh (2007)</p>
+                </div>
+                <div class="glass-panel p-4 rounded-2xl reveal-element">
+                    <img src="https://i.ibb.co.com/4R64MhTW/QVZl-Um-I2b-Uh-PUUdtd19ue-A.jpg" class="w-full h-48 object-cover rounded-xl mb-4">
+                    <p class="text-sm font-medium">Started My College Life (2024)</p>
+                </div>
+                <div class="glass-panel p-4 rounded-2xl reveal-element">
+                    <img src="https://i.ibb.co.com/tMK5m1y8/retouch-2025083016274126.jpg" class="w-full h-48 object-cover rounded-xl mb-4">
+                    <p class="text-sm font-medium">Passed HSC Exam (GPA-5) (2025)</p>
+                </div>
+                <div class="glass-panel p-4 rounded-2xl reveal-element">
+                    <img src="https://i.ibb.co.com/rKLMty2z/QVZlb-HJJa-Eo1-REJ3c-HVFYQ.jpg" class="w-full h-48 object-cover rounded-xl mb-4">
+                    <p class="text-sm font-medium">Got Perfect Grade certificate</p>
+                </div>
+                <div class="glass-panel p-4 rounded-2xl reveal-element">
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=400" class="w-full h-48 object-cover rounded-xl mb-4">
+                    <p class="text-sm font-medium">Coming Soon: University Adventures</p>
+                </div>
+            </div>
+        </section>
 
-  <!-- ACHIEVEMENTS SEGMENT -->
-  <div class="sr-bottom achievements">
-    <div class="section-title">Achievements</div>
-    <div class="achievement-grid">
-      <div class="achievement-card">
-        <img loading="lazy" src="https://i.ibb.co.com/4wvGqR5k/HSC-GPA-5-OG-Image-2025.png" alt="GPA 5">
-        <div class="achievement-text">Presidency University & Prothom Alo Certificate</div>
-      </div>
-      <div class="achievement-card">
-        <img loading="lazy" src="https://i.ibb.co.com/9k32gzsb/certificate-1.png" alt="Excellence">
-        <div class="achievement-text">Certificate Of Excellence</div>
-      </div>
-      <div class="achievement-card">
-        <img loading="lazy" src="https://i.ibb.co.com/20PsC5GZ/WE.jpg" alt="Science Fair">
-        <div class="achievement-text">Science Fair Participation (2023)</div>
-      </div>
-      <div class="achievement-card">
-        <img loading="lazy" src="https://i.ibb.co.com/0yVpJzwN/images.png" alt="Google Certificate">
-        <div class="achievement-text">Google Career Certificates (Foundational)</div>
-      </div>
-      <div class="achievement-card">
-        <img loading="lazy" src="https://i.ibb.co.com/Cswzb8Kz/share.png" alt="Developer Badge">
-        <div class="achievement-text">Google Developer Badges (Logic & Coding)</div>
-      </div>
-    </div>
-  </div>
+        <!-- Achievements Section -->
+        <section class="py-20 px-6 max-w-7xl mx-auto bg-white/5 rounded-[3rem]">
+            <h2 class="text-3xl font-bold heading-font mb-10 text-center">Achievements</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+                <div class="glass-panel p-4 rounded-2xl reveal-element text-center">
+                    <img src="https://i.ibb.co.com/4wvGqR5k/HSC-GPA-5-OG-Image-2025.png" class="w-full h-32 object-cover rounded-xl mb-3">
+                    <p class="text-xs font-bold">Presidency University & Prothom Alo</p>
+                </div>
+                <div class="glass-panel p-4 rounded-2xl reveal-element text-center">
+                    <img src="https://i.ibb.co.com/9k32gzsb/certificate-1.png" class="w-full h-32 object-cover rounded-xl mb-3">
+                    <p class="text-xs font-bold">Certificate Of Excellence</p>
+                </div>
+                <div class="glass-panel p-4 rounded-2xl reveal-element text-center">
+                    <img src="https://i.ibb.co.com/20PsC5GZ/WE.jpg" class="w-full h-32 object-cover rounded-xl mb-3">
+                    <p class="text-xs font-bold">Science Fair Participation (2023)</p>
+                </div>
+                <div class="glass-panel p-4 rounded-2xl reveal-element text-center">
+                    <img src="https://i.ibb.co.com/0yVpJzwN/images.png" class="w-full h-32 object-cover rounded-xl mb-3">
+                    <p class="text-xs font-bold">Google Foundational Certificates</p>
+                </div>
+                <div class="glass-panel p-4 rounded-2xl reveal-element text-center">
+                    <img src="https://i.ibb.co.com/Cswzb8Kz/share.png" class="w-full h-32 object-cover rounded-xl mb-3">
+                    <p class="text-xs font-bold">Google Developer Badges</p>
+                </div>
+            </div>
+        </section>
 
-  <!-- GALLERY SEGMENT -->
-  <div class="sr-bottom gallery">
-    <div class="section-title">Gallery</div>
-    <div class="gallery-grid">
-      <img loading="lazy" src="https://i.ibb.co.com/v4CxR3bJ/IMG-1767965910057.jpg">
-      <img loading="lazy" src="https://i.ibb.co.com/k2N7p3bb/IMG-20251230-012241.jpg">
-      <img loading="lazy" src="https://i.ibb.co.com/9dqCzKG/FB-IMG-3047310916701312656.jpg">
-      <img loading="lazy" src="https://i.ibb.co.com/YTPnmC9f/retouch-2024122023020602.jpg">
-      <img loading="lazy" src="https://i.ibb.co.com/XrcX4khr/IMG-20251214-202209.jpg">
-      <img loading="lazy" src="https://i.ibb.co.com/KjL397XQ/IMG-20251207-205550.jpg">
-      <img loading="lazy" src="https://i.ibb.co.com/qM6KKnzV/retouch-2024122015034815.jpg">
-      <img loading="lazy" src="https://i.ibb.co.com/FLBzpSNL/Screenshot-2024-12-12-11-00-07-110-com-facebook-katana.png">
-      <img loading="lazy" src="https://i.ibb.co.com/HT9cxbpf/retouch-2025083016274126.jpg">
-      <img loading="lazy" src="https://i.ibb.co.com/gb4K8kwC/retouch-2024091710143985.jpg">
-      <img loading="lazy" src="https://i.ibb.co.com/XxcczpCX/Snapchat-1585967114.jpg">
-      <img loading="lazy" src="https://i.ibb.co.com/1GQwyQvK/Snapchat-368490589.jpg">
-      <img loading="lazy" src="https://i.ibb.co.com/Y45L0spY/retouch-2025112414394377.jpg">
-      <img loading="lazy" src="https://i.ibb.co.com/Tx1zmWWh/retouch-2024091800470977.jpg">
-      <img loading="lazy" src="https://i.ibb.co.com/hqhnw1f/FB-IMG-1718116442789.jpg">
-      <img loading="lazy" src="https://i.ibb.co.com/HpXv4SvV/Snapchat-2136611923.jpg">
-      <img loading="lazy" src="https://i.ibb.co.com/fV6wdSFP/retouch-2025082222540541.jpg">
-      <img loading="lazy" src="https://i.ibb.co.com/LHx8z9P/FB-IMG-1718116480985.jpg">
-    </div>
-  </div>
+        <!-- Gallery Section -->
+        <section class="py-20 px-6 max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold heading-font mb-10 text-center">Gallery</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
+                <img src="https://i.ibb.co.com/v4CxR3bJ/IMG-1767965910057.jpg" class="rounded-lg aspect-square object-cover reveal-element hover:scale-105 transition-transform">
+                <img src="https://i.ibb.co.com/k2N7p3bb/IMG-20251230-012241.jpg" class="rounded-lg aspect-square object-cover reveal-element hover:scale-105 transition-transform">
+                <img src="https://i.ibb.co.com/9dqCzKG/FB-IMG-3047310916701312656.jpg" class="rounded-lg aspect-square object-cover reveal-element hover:scale-105 transition-transform">
+                <img src="https://i.ibb.co.com/YTPnmC9f/retouch-2024122023020602.jpg" class="rounded-lg aspect-square object-cover reveal-element hover:scale-105 transition-transform">
+                <img src="https://i.ibb.co.com/XrcX4khr/IMG-20251214-202209.jpg" class="rounded-lg aspect-square object-cover reveal-element hover:scale-105 transition-transform">
+                <img src="https://i.ibb.co.com/KjL397XQ/IMG-20251207-205550.jpg" class="rounded-lg aspect-square object-cover reveal-element hover:scale-105 transition-transform">
+                <img src="https://i.ibb.co.com/qM6KKnzV/retouch-2024122015034815.jpg" class="rounded-lg aspect-square object-cover reveal-element hover:scale-105 transition-transform">
+                <img src="https://i.ibb.co.com/FLBzpSNL/Screenshot-2024-12-12-11-00-07-110-com-facebook-katana.png" class="rounded-lg aspect-square object-cover reveal-element hover:scale-105 transition-transform">
+                <img src="https://i.ibb.co.com/HT9cxbpf/retouch-2025083016274126.jpg" class="rounded-lg aspect-square object-cover reveal-element hover:scale-105 transition-transform">
+                <img src="https://i.ibb.co.com/gb4K8kwC/retouch-2024091710143985.jpg" class="rounded-lg aspect-square object-cover reveal-element hover:scale-105 transition-transform">
+                <img src="https://i.ibb.co.com/XxcczpCX/Snapchat-1585967114.jpg" class="rounded-lg aspect-square object-cover reveal-element hover:scale-105 transition-transform">
+                <img src="https://i.ibb.co.com/1GQwyQvK/Snapchat-368490589.jpg" class="rounded-lg aspect-square object-cover reveal-element hover:scale-105 transition-transform">
+                <img src="https://i.ibb.co.com/Y45L0spY/retouch-2025112414394377.jpg" class="rounded-lg aspect-square object-cover reveal-element hover:scale-105 transition-transform">
+                <img src="https://i.ibb.co.com/Tx1zmWWh/retouch-2024091800470977.jpg" class="rounded-lg aspect-square object-cover reveal-element hover:scale-105 transition-transform">
+                <img src="https://i.ibb.co.com/hqhnw1f/FB-IMG-1718116442789.jpg" class="rounded-lg aspect-square object-cover reveal-element hover:scale-105 transition-transform">
+                <img src="https://i.ibb.co.com/HpXv4SvV/Snapchat-2136611923.jpg" class="rounded-lg aspect-square object-cover reveal-element hover:scale-105 transition-transform">
+                <img src="https://i.ibb.co.com/fV6wdSFP/retouch-2025082222540541.jpg" class="rounded-lg aspect-square object-cover reveal-element hover:scale-105 transition-transform">
+                <img src="https://i.ibb.co.com/LHx8z9P/FB-IMG-1718116480985.jpg" class="rounded-lg aspect-square object-cover reveal-element hover:scale-105 transition-transform">
+            </div>
+        </section>
 
-  <div class="sr-bottom quote-box">
-    "Ever tried. Ever failed. No matter. Try again. Fail again. Fail better."<br>&nbsp;&nbsp;&nbsp;&nbsp;~ Samuel Beckett
-  </div>
+        <!-- Academics -->
+        <section class="py-20 px-6 max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-bold heading-font mb-8">Academics & Admissions</h2>
+            
+            </a>
+            <div class="glass-panel p-6 rounded-2xl grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-left">
+                <div class="flex justify-between border-b border-white/10 pb-2"><span>SUST A-Unit:</span> <span class="text-yellow-400">Pending</span></div>
+                <div class="flex justify-between border-b border-white/10 pb-2"><span>Jagannath Univ:</span> <span>6798th</span></div>
+                <div class="flex justify-between border-b border-white/10 pb-2"><span>Jahangirnagar Univ:</span> <span>1589th</span></div>
+                <div class="flex justify-between border-b border-white/10 pb-2"><span>Chittagong Univ:</span> <span>5886th</span></div>
+            </div>
+        </section>
 
-  <div class="sr-bottom poll">
-    <div class="poll-title">Coffee ☕ or Tea 🍵?</div>
-    <div class="poll-options">
-      <button class="poll-btn" onclick="showPopup('coffee')">☕ Coffee</button>
-      <button class="poll-btn" onclick="showPopup('tea')">🍵 Tea</button>
-    </div>
-  </div>
+        <!-- Interactions -->
+        <section class="py-20 px-6 max-w-xl mx-auto text-center">
+            <div class="glass-panel p-8 rounded-3xl reveal-element">
+                <div class="text-[#00ff99] font-bold mb-4">• Did You Know?</div>
+                <div id="fact-text" class="text-lg italic mb-6">I'm in love with a Devil! 😈</div>
+                <button onclick="nextFact()" class="bg-[#00ff99] text-black px-6 py-2 rounded-xl font-bold hover:scale-105 transition-transform">Another Fact</button>
+                
+                <div class="mt-12 border-t border-white/10 pt-8">
+                    <p class="mb-6">Coffee ☕ or Tea 🍵?</p>
+                    <div class="flex justify-center gap-4">
+                        <button onclick="showPopup('coffee')" class="glass-panel px-6 py-2 rounded-xl hover:bg-[#00ff99] hover:text-black">☕ Coffee</button>
+                        <button onclick="showPopup('tea')" class="glass-panel px-6 py-2 rounded-xl hover:bg-[#00ff99] hover:text-black">🍵 Tea</button>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <div class="sr-bottom academics">
-    <div class="section-title">📚 Academics & Admissions</div>
-    <a href="https://maxudul.github.io/Maksudul_Munna/" target="_blank" class="academics-btn">
-      <i class="fas fa-graduation-cap"></i>
-      <span>View My Academic & Admission Results</span>
-    </a>
-    <div class="academics-overview">
-      <div class="overview-item"><strong>SUST A-Unit:</strong> Pending</div>
-      <div class="overview-item"><strong>Jagannath University:</strong> 6798th</div>
-      <div class="overview-item"><strong>Jahangirnagar University:</strong> 1589th</div>
-      <div class="overview-item"><strong>Chittagong University:</strong> 5886th</div>
-    </div>
-  </div>
+        <!-- Socials -->
+        <section class="py-20 px-6 max-w-7xl mx-auto text-center">
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="https://www.facebook.com/share/1Ey2xqhkdD/" class="w-12 h-12 glass-panel flex items-center justify-center rounded-full text-[#00ff99] hover:bg-[#00ff99] hover:text-black transition-all"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/maxudul_munna?igsh=bGsyc2xodHJvZGlo" class="w-12 h-12 glass-panel flex items-center justify-center rounded-full text-[#00ff99] hover:bg-[#00ff99] hover:text-black transition-all"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/8801687640259" class="w-12 h-12 glass-panel flex items-center justify-center rounded-full text-[#00ff99] hover:bg-[#00ff99] hover:text-black transition-all"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://pin.it/NxhZUtMBZ" class="w-12 h-12 glass-panel flex items-center justify-center rounded-full text-[#00ff99] hover:bg-[#00ff99] hover:text-black transition-all"><i class="fab fa-pinterest-p"></i></a>
+                <a href="https://youtube.com/@midnightwhisperyt?si=G7m7RkaMBlzt03Zt" class="w-12 h-12 glass-panel flex items-center justify-center rounded-full text-[#00ff99] hover:bg-[#00ff99] hover:text-black transition-all"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.snapchat.com/add/maxudul_munna?share_id=7tr0SxUycfI&locale=en-GB" class="w-12 h-12 glass-panel flex items-center justify-center rounded-full text-[#00ff99] hover:bg-[#00ff99] hover:text-black transition-all"><i class="fab fa-snapchat-ghost"></i></a>
+            </div>
+            <p class="mt-12 text-gray-600 text-xs">© 2026 Maksudul Munna • Created with Vision</p>
+        </section>
+    </main>
 
-</div>
+    <script>
+        // Load Reveal
+        window.addEventListener('load', () => {
+            document.getElementById('loader').style.display = 'none';
+            initThree();
+        });
 
-<script src="https://unpkg.com/scrollreveal"></script>
-<script>
-const facts = [
-  "I'm in love with a Devil! 😈",
-  "I like to watch cartoons! 📺",
-  "I'm an anime lover 🏯",
-  "I love coding late at night. 💻",
-  "I am a tech enthusiast and story writer. ✍️",
-  "I passed my HSC with a GPA-5! 🎓",
-  "I believe in failing better every single time. 🚀"
-];
-let currentFactIndex = 0;
-function nextFact() {
-  const factElement = document.getElementById('fact-text');
-  factElement.style.opacity = 0;
-  setTimeout(() => {
-    currentFactIndex = (currentFactIndex + 1) % facts.length;
-    factElement.innerText = facts[currentFactIndex];
-    factElement.style.opacity = 1;
-  }, 300);
-}
+        // Facts
+        const facts = ["I'm in love with a Devil! 😈", "I like to watch cartoons! 📺", "I'm an anime lover 🏯", "I love coding late at night. 💻", "I am a tech enthusiast and story writer. ✍️", "I passed my HSC with a GPA-5! 🎓", "I believe in failing better every single time. 🚀"];
+        let fIdx = 0;
+        function nextFact() {
+            fIdx = (fIdx + 1) % facts.length;
+            const el = document.getElementById('fact-text');
+            el.style.opacity = 0;
+            setTimeout(() => { el.innerText = facts[fIdx]; el.style.opacity = 1; }, 200);
+        }
 
-function showPopup(choice) {
-    const popup = document.getElementById('pollPopup');
-    const popupText = document.getElementById('popupText');
-    popupText.innerHTML = choice === 'coffee' ? 
-        "Excellent choice! ☕<br>Coffee keeps the code running and the soul awake. Let's conquer the day!" : 
-        "Classic choice! 🍵<br>Tea is the secret to a calm mind and focused spirit. Stay serene, HIVE.";
-    popup.classList.add('active');
-}
+        // Polls
+        function showPopup(choice) {
+            const popup = document.getElementById('pollPopup');
+            const text = document.getElementById('popupText');
+            text.innerHTML = choice === 'coffee' ? "Excellent choice! ☕<br>Coffee keeps the code running." : "Classic choice! 🍵<br>Tea is for focused spirits.";
+            popup.classList.add('active');
+        }
+        function closePopup() { document.getElementById('pollPopup').classList.remove('active'); }
 
-function closePopup() {
-    document.getElementById('pollPopup').classList.remove('active');
-}
+        // Observer
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in-view'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal-element').forEach(el => obs.observe(el));
 
-const sr = ScrollReveal({
-    origin: 'top',
-    distance: '60px',
-    duration: 2000,
-    delay: 200,
-    reset: false
-});
+        // 3D Background - Subtle Starfield
+        function initThree() {
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000);
+            camera.position.z = 1;
+            camera.rotation.x = Math.PI/2;
 
-sr.reveal('.sr-top');
-sr.reveal('.sr-left', { origin: 'left', distance: '100px', delay: 400 });
-sr.reveal('.sr-right', { origin: 'right', distance: '100px', delay: 400 });
-sr.reveal('.sr-bottom', { origin: 'bottom', delay: 500 });
-sr.reveal('.sr-card', { interval: 100, origin: 'bottom', distance: '40px' });
-sr.reveal('.sr-social', { interval: 150, origin: 'left', distance: '50px' });
-sr.reveal('.life-event', { interval: 150, origin: 'bottom', distance: '30px' });
-sr.reveal('.achievement-card', { interval: 150, origin: 'bottom', distance: '30px' });
-sr.reveal('.media-card', { interval: 100, origin: 'bottom', distance: '30px' });
-sr.reveal('.gallery-grid img', { interval: 50, scale: 0.85 });
-sr.reveal('.hobby-item', { interval: 100, scale: 0.9, origin: 'bottom' });
-</script>
+            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+            // Create Stars
+            const starGeo = new THREE.BufferGeometry();
+            const starCount = 6000;
+            const positions = new Float32Array(starCount * 3);
+            const velocities = new Float32Array(starCount);
+
+            for(let i=0; i < starCount; i++) {
+                positions[i*3] = Math.random() * 600 - 300;
+                positions[i*3 + 1] = Math.random() * 600 - 300;
+                positions[i*3 + 2] = Math.random() * 600 - 300;
+                velocities[i] = 0.1 + Math.random() * 0.2;
+            }
+
+            starGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            
+            const starMaterial = new THREE.PointsMaterial({
+                color: 0x00ff99,
+                size: 0.7,
+                transparent: true,
+                opacity: 0.8
+            });
+
+            const stars = new THREE.Points(starGeo, starMaterial);
+            scene.add(stars);
+
+            function animate() {
+                const posArr = starGeo.attributes.position.array;
+                for(let i=0; i<starCount; i++) {
+                    posArr[i*3 + 1] -= velocities[i]; // Move down y-axis
+                    if(posArr[i*3 + 1] < -300) {
+                        posArr[i*3 + 1] = 300;
+                    }
+                }
+                starGeo.attributes.position.needsUpdate = true;
+                stars.rotation.y += 0.0005;
+
+                renderer.render(scene, camera);
+                requestAnimationFrame(animate);
+            }
+            animate();
+
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+        }
+    </script>
 </body>
 </html>
 
